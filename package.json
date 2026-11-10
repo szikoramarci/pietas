@@ -1,0 +1,14 @@
+{
+  "name": "pietas-temetkezes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Pietas Temetkezés (Miskolc) weboldala – statikus oldal Cloudflare Pages-re",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs && npx --yes serve dist"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

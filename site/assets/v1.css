@@ -67,6 +67,7 @@ a.tel { font-weight: 700; }
 .tabla-cimke { margin: 0 0 var(--t-1); color: var(--halvany); }
 .tabla-szam { margin: 0 0 var(--t-5); }
 .tabla-szam a.tel { font-family: var(--betu-cim); font-weight: 400; letter-spacing: 0.02em; font-size: clamp(1.953rem, 1.5rem + 1.6vw, 2.441rem); line-height: 1.1; color: var(--link); text-decoration: none; }
+@media (max-width: 359px) { .tabla-szam a.tel { font-size: 1.563rem; } }  /* 320 px-en se lógjon ki az ügyeleti szám */
 .ugyelet-tabla dl { margin: 0; display: grid; gap: var(--t-3); border-top: 1px solid var(--keret); padding-top: var(--t-4); }
 .ugyelet-tabla dt { font-size: var(--m-kicsi); color: var(--halvany); }
 .ugyelet-tabla dd { margin: 0; }
@@ -74,3 +75,5 @@ a.tel { font-weight: 700; }
 
 .lepesek li::before { color: #2A4F45; }
 .kapcsolat { background: var(--felulet); }
+/* A lenyitott menü egy árnyalattal világosabb, hogy elváljon a sötét nyitóképtől */
+.v1 .menu-panel, .v1 .menu-mobil[open] summary { background: var(--felulet); }

@@ -29,6 +29,7 @@
     <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 3.5h3.2l1.6 4.3-2 1.3a12 12 0 0 0 7.1 7.1l1.3-2 4.3 1.6V19a1.8 1.8 0 0 1-1.9 1.8A16.6 16.6 0 0 1 3.2 5.4 1.8 1.8 0 0 1 5 3.5Z"/></symbol>
     <symbol id="i-level" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></g></symbol>
     <symbol id="i-hely" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="i-ora" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
     <symbol id="i-mecses" viewBox="0 0 32 40"><path class="lang-kulso" d="M16 2.5c3.2 6.2 8.2 10.6 8.2 17.6a8.2 8.2 0 0 1-16.4 0c0-7 5-11.4 8.2-17.6z"/><path class="lang-belso" d="M16 13.5c1.6 3 4.2 5 4.2 8.6a4.2 4.2 0 0 1-8.4 0c0-3.6 2.6-5.6 4.2-8.6z"/><path class="mecses-tal" d="M4.5 32.5h23c0 4-5 6.5-11.5 6.5s-11.5-2.5-11.5-6.5z"/></symbol>
   </svg>
@@ -44,13 +45,26 @@
         <svg class="marka-ikon" aria-hidden="true"><use href="#i-jel"/></svg>
         <span class="marka-szoveg" aria-hidden="true"><svg class="marka-felirat"><use href="#i-felirat"/></svg><span class="marka-al">Teljeskörű temetkezési szolgálat</span></span>
       </a>
-      <nav aria-label="Fő menü"><ul>
+      <nav class="fomenu" aria-label="Fő menü">
+        <ul class="menu-sor">
         <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
         <li><a href="#teendok">Teendők</a></li>
         <li><a href="#rolunk">Rólunk</a></li>
         <li><a href="#koltsegek">Költségek</a></li>
         <li><a href="#kapcsolat">Kapcsolat</a></li>
-      </ul></nav>
+        </ul>
+        <!-- Mobilon és tableten: Menü gomb JavaScript nélkül (<details>), a lista a fejléc alá nyílik. -->
+        <details class="menu-mobil">
+          <summary><svg aria-hidden="true"><use href="#i-menu"/></svg>Menü</summary>
+          <ul class="menu-panel">
+        <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+        <li><a href="#teendok">Teendők</a></li>
+        <li><a href="#rolunk">Rólunk</a></li>
+        <li><a href="#koltsegek">Költségek</a></li>
+        <li><a href="#kapcsolat">Kapcsolat</a></li>
+          </ul>
+        </details>
+      </nav>
       <a class="fejlec-tel" href="tel:+36202353603"><svg aria-hidden="true"><use href="#i-tel"/></svg><span><span class="fejlec-tel-cimke">Ügyelet 0–24</span> 06 20 235 3603</span></a>
     </div>
   </header>

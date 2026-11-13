@@ -38,3 +38,5 @@ h2 { font-size: clamp(1.953rem, 1.5rem + 1.8vw, 2.441rem); }
 .kapcsolat { background: #E9EFEE; }
 .nyito-alcim { font-size: var(--m-h3); margin-top: var(--t-7); }
 .nyito-alcim::after { content: none; }
+.menu-panel { background: var(--felulet); }
+.menu-mobil[open] summary { background: var(--hatter); }

@@ -1,39 +1,51 @@
-# Pietas Temetkezés – weboldal
+# Pietas Temetkezés – bemutató weboldal (demó)
 
-A miskolci Pietas Temetkezés megújított weboldala. Statikus oldal, függőségek nélkül; Cloudflare Pages szolgálja ki, a `main` ágra küldött minden változás automatikusan élesedik.
+Privát, PIN-kóddal védett bemutató oldal a miskolci PIETAS Kft. részére, a gyorsweb-folyamat szerint
+(`szikoramarci/gyorsweb`: `CLAUDE.md`, `docs/SZABALYOK.md`, `docs/DEMO-RETEG.md`, `docs/DIZAJN.md`).
+Nem indexelt, csak a tulajdonossal osztjuk meg. Ha nem kérik, 2–4 hét után töröljük.
 
 ## Felépítés
 
 ```
-src/
-  layout.html        közös fejléc, menü, lábléc, mobil hívósáv
-  pages/*.html       az egyes oldalak tartalma (a fájl eleji JSON-komment: cím, leírás, útvonal)
-  partials/*.html    ismétlődő blokkok, pl. az oldalsó hívódoboz (<!-- include:aside-call -->)
-  static/            változtatás nélkül másolódik: CSS, JS, betűk, favicon, _redirects, _headers
-scripts/build.mjs    összerakja az oldalakat a dist/ mappába, és elkészíti a sitemap.xml-t
+site/                     ← a Cloudflare Pages gyökere (a functions/ miatt ennek kell lennie)
+  index.html              ← választó: három változat előnézeti képpel
+  v1/ v2/ v3/             ← Mécses, Ív, Liliom (generált)
+  ajanlat/                ← miért készült, mit találtunk, ki készítette (értékesítési réteg)
+  adatkezeles/            ← a bemutató oldal adatkezelési tájékoztatója (réteg)
+  assets/                 ← alap.css + v1–v3.css, betűk (saját tárhelyről), réteg JS/CSS
+  valaszto/               ← előnézeti képek (elonezet.py)
+  functions/_middleware.js  ← PIN-kódos belépés (DEMO_PIN)
+  functions/api/jelzes.js   ← „Tetszik ez a rész?” jelzések → VISSZAJELZES KV
+anyagok/
+  adatok.md               ← tényadatok forrással, nyitott kérdések
+  generator.py            ← a változatok, a választó és az ajánlatoldal egy tartalomból
+  logo/                   ← a régi logó vektorosan lekövetve (az eredeti kérendő)
+  regi-oldal/, kepernyokepek/, lighthouse.txt
+elemzes.md                ← a régi oldal elemzése, ingyenes tipp, Lighthouse
 ```
 
-## Helyi futtatás
+## Módosítás
 
+```sh
+python3 anyagok/generator.py site                     # oldalak újragenerálása
+# minden változat-módosítás után az előnézeti képek (a gyorsweb repóból):
+CHROME_PATH=/usr/bin/google-chrome python3 sites/_sablonok/_valaszto/elonezet.py ../pietas/site v1 v2 v3
+python3 sites/_sablonok/_dizajn/kontraszt.py ../pietas/site/assets/v1.css
 ```
-npm run build      # → dist/
-npm run preview    # build + helyi szerver
-```
 
-Node 18 vagy újabb kell, más függőség nincs.
-
-## Cloudflare Pages beállítás
+## Cloudflare Pages (`pietas-temetkezes` projekt)
 
 | Beállítás | Érték |
 |---|---|
-| Production branch | `main` |
-| Build command | `node scripts/build.mjs` |
-| Build output directory | `dist` |
-| Környezeti változó (opcionális) | `SITE_URL` – alapértelmezés: `https://pietas-temetkezes.hu` |
+| Production branch | `main` (minden push élesít) |
+| Root directory | `site` |
+| Build command / output | nincs |
+| `DEMO_PIN` | titkosított környezeti változó, 6 számjegy |
+| `VISSZAJELZES` | KV-kötés a jelzésekhez |
+| `ERTESITO_URL` | opcionális webhook a hívásigényekhez |
 
-## Tudnivalók
+## Élesítéskor (ha az ügyfél kéri)
 
-- **Régi címek:** a `src/static/_redirects` a régi WordPress-oldal aloldalait 301-gyel az új oldalakra irányítja, így a Google-találatok és a régi linkek nem vesznek el a domain átállításakor.
-- **Betűk:** Marcellus (címek, telefonszámok) és Atkinson Hyperlegible Next (szöveg), saját tárhelyről, SIL Open Font License alatt.
-- **Adatvédelem:** az oldal nem használ sütit és külső követőkódot.
-- **Kitöltendő:** a `jogi-nyilatkozat` oldalon a hivatalos cégnév, cégjegyzékszám és adószám.
+A választott változat lesz a gyökér; a réteg törlendő: `ajanlat/`, `adatkezeles/`, `valaszto/`,
+`functions/`, `assets/ki-keszitette.*`, `assets/tetszik.*`, a bemutató sáv, a `noindex`, a `robots.txt`
+tiltása. A régi WordPress-címek 301-es átirányítása ekkor kerül be (`_redirects`).

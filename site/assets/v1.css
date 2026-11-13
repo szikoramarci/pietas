@@ -1,0 +1,76 @@
+/* v1 – Mécses: mélyzöld (ciprus) és mészkőszürke, egyetlen meleg fény a mécsesből (borostyán, csak díszítés
+   és a sötét nyitókép fő gombja). Marcellus (római feliratokat idéző címbetű) + Atkinson Hyperlegible Next
+   (gyengénlátóknak tervezett szövegbetű; az áthúzott nulla szándékos, összetéveszthetetlen). A nagy ügyeleti szám
+   a Marcellusszal, a többi szám az Atkinsonnal (a Marcellus 1-ese és 0-ja kis méretben I-nek és O-nak látszik).
+   Ellenőrzés: kontraszt.py */
+
+
+:root {
+  --hatter: #F5F6F2;
+  --felulet: #E6E9E2;
+  --szoveg: #1F2528;
+  --halvany: #48534E;
+  --kiemeles: #1D3630;
+  --kiemeles-szoveg: #FFFFFF;
+  --link: #2A4F45;
+  --diszito: #D8A94C;
+  --keret: #C9D1C7;
+
+  --betu-cim: "Marcellus", Georgia, serif;
+  --betu-szoveg: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --lekerekites: 8px;
+  --lekerekites-kicsi: 8px;
+}
+
+/* Sötét rész: fejléc, nyitókép, lábléc */
+.v1 .fejlec, .v1 .nyito, .v1 .lablec {
+  --hatter: #1D3630;
+  --felulet: #27463E;
+  --szoveg: #F2F4EF;
+  --halvany: #BCC8BF;
+  --kiemeles: #F3DEAA;
+  --kiemeles-szoveg: #1D3630;
+  --link: #F3DEAA;
+  --diszito: #D8A94C;
+  --keret: #3B5E54;
+  background: var(--hatter);
+  color: var(--szoveg);
+}
+.v1 .lablec { border-top: 0; }
+.v1 .lablec a { color: var(--link); }
+
+h1, h2, h3 { font-weight: 400; letter-spacing: 0.005em; }
+.marka-nev { font-size: 1.5625rem; letter-spacing: 0.04em; }
+.v1 .marka-ikon { color: #C9D4CC; }
+a.tel { font-weight: 700; }
+.fejlec-tel > span { color: #F3DEAA; }
+
+/* Ügyeleti tábla a mécsessel: az oldal egyetlen hangsúlyos eleme */
+.ugyelet-tabla {
+  border: 1px solid var(--keret);
+  border-radius: var(--lekerekites);
+  padding: var(--t-6);
+  background: radial-gradient(120% 70% at 50% -10%, rgba(216, 169, 76, .16), transparent 60%), var(--felulet);
+}
+.mecses { width: 48px; height: 60px; margin-bottom: var(--t-4); color: #BCC8BF; }
+.lang-kulso { fill: #D8A94C; }
+.lang-belso { fill: #F3DEAA; }
+.mecses-tal { fill: currentColor; }
+.mecses .lang-kulso, .mecses .lang-belso { transform-origin: 50% 85%; animation: lobog 5.5s ease-in-out infinite; }
+.mecses .lang-belso { animation-duration: 3.7s; }
+@keyframes lobog {
+  0%, 100% { transform: scale(1, 1) skewX(0deg); }
+  30% { transform: scale(.97, 1.03) skewX(-1.5deg); }
+  55% { transform: scale(1.02, .98) skewX(1deg); }
+  80% { transform: scale(.99, 1.02) skewX(-.5deg); }
+}
+.tabla-cimke { margin: 0 0 var(--t-1); color: var(--halvany); }
+.tabla-szam { margin: 0 0 var(--t-5); }
+.tabla-szam a.tel { font-family: var(--betu-cim); font-weight: 400; letter-spacing: 0.02em; font-size: clamp(1.953rem, 1.5rem + 1.6vw, 2.441rem); line-height: 1.1; color: var(--link); text-decoration: none; }
+.ugyelet-tabla dl { margin: 0; display: grid; gap: var(--t-3); border-top: 1px solid var(--keret); padding-top: var(--t-4); }
+.ugyelet-tabla dt { font-size: var(--m-kicsi); color: var(--halvany); }
+.ugyelet-tabla dd { margin: 0; }
+.ugyelet-tabla dd a.tel { color: var(--szoveg); }
+
+.lepesek li::before { color: #2A4F45; }
+.kapcsolat { background: var(--felulet); }

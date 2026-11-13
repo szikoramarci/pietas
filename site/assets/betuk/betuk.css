@@ -1,0 +1,55 @@
+/* Generálta: sites/_sablonok/_dizajn/betuk.py. Saját tárhelyről, magyar karakterkészlettel. */
+
+@font-face {
+  font-family: "Marcellus";
+  src: url("marcellus.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0020-007E,U+00A0-00FF,U+0150-0151,U+0170-0171,U+2010-2027,U+2030,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2190-2193,U+2212;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("atkinsonhyperlegiblenext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0020-007E,U+00A0-00FF,U+0150-0151,U+0170-0171,U+2010-2027,U+2030,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2190-2193,U+2212;
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("sourceserif4.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0020-007E,U+00A0-00FF,U+0150-0151,U+0170-0171,U+2010-2027,U+2030,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2190-2193,U+2212;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("sourcesans3.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0020-007E,U+00A0-00FF,U+0150-0151,U+0170-0171,U+2010-2027,U+2030,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2190-2193,U+2212;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("cormorantgaramond.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0020-007E,U+00A0-00FF,U+0150-0151,U+0170-0171,U+2010-2027,U+2030,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2190-2193,U+2212;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("worksans.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0020-007E,U+00A0-00FF,U+0150-0151,U+0170-0171,U+2010-2027,U+2030,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2190-2193,U+2212;
+}

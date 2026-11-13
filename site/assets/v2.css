@@ -1,0 +1,55 @@
+/* v2 – Ív: a mostani arculat felújítva. A régi oldal bordó menüsávja (#592131), borostyán kiemelése (#F1AD48)
+   és papírszerű törtfehér háttere; a logó sírkő-íve a nyitóképen nagyban. A borostyán csak díszítés
+   (fehér felirattal nem olvasható), a fő gomb a bordó. Source Serif 4 + Source Sans 3 (megbízható, klasszikus).
+   Ellenőrzés: kontraszt.py */
+:root {
+  --hatter: #F7F2EA;
+  --felulet: #FDFBF7;
+  --szoveg: #3A2A27;
+  --halvany: #66534D;
+  --kiemeles: #592131;
+  --kiemeles-szoveg: #FFFFFF;
+  --link: #7A2E43;
+  --diszito: #F1AD48;
+  --keret: #E3D7C8;
+
+  --betu-cim: "Source Serif 4", Georgia, serif;
+  --betu-szoveg: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --lekerekites: 4px;
+  --lekerekites-kicsi: 4px;
+}
+
+/* Bordó sáv: fejléc és lábléc, mint a régi oldal menüje */
+.v2 .fejlec, .v2 .lablec {
+  --hatter: #592131;
+  --felulet: #6A2A3D;
+  --szoveg: #FBF3E8;
+  --halvany: #E7CFC2;
+  --kiemeles: #F1AD48;
+  --kiemeles-szoveg: #3A1520;
+  --link: #FBDDA6;
+  --diszito: #F1AD48;
+  --keret: #7D3D50;
+  background: var(--hatter);
+  color: var(--szoveg);
+  border: 0;
+}
+.v2 .lablec a { color: var(--link); }
+
+h1, h2 { font-weight: 600; letter-spacing: -0.01em; }
+h3 { font-weight: 600; }
+.marka-ikon { width: 21px; height: 44px; color: #FBF3E8; }
+.marka-felirat { width: 104px; height: 36px; color: #FBF3E8; }
+.marka-al { color: #E7CFC2; }
+.fejlec nav a[href]:hover, .fejlec nav a:focus-visible { border-bottom-color: #F1AD48; }
+
+/* Nyitókép: a logó íve nagyban */
+.nyito { background: linear-gradient(var(--hatter), var(--felulet)); }
+.nyito-jel { display: grid; justify-items: center; gap: var(--t-5); }
+.nagy-jel { width: clamp(120px, 18vw, 190px); height: auto; aspect-ratio: 236 / 504; color: #592131; }
+.nyito-jel .tenyek { justify-content: center; margin: 0; }
+@media (max-width: 899px) { .nyito-jel { justify-items: start; } .nagy-jel { display: none; } .nyito-jel .tenyek { justify-content: flex-start; } }
+.felcim { color: #7A2E43; font-weight: 600; letter-spacing: .02em; }
+h2::after { content: ""; display: block; width: var(--t-7); height: 3px; background: var(--diszito); margin-top: var(--t-3); border-radius: 2px; }
+.lepesek li::before { color: #592131; }
+.kapcsolat { background: var(--felulet); border-top: 1px solid var(--keret); }

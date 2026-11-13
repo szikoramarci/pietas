@@ -1,0 +1,40 @@
+/* v3 – Liliom: világos, levegős, tipográfiavezérelt. Mélykék és homok („bizalom” paletta, docs/DIZAJN.md),
+   Cormorant Garamond nagy címekhez + Work Sans szöveghez. A nyitókép maga az útmutató: rögtön a lépések.
+   Ellenőrzés: kontraszt.py */
+:root {
+  --hatter: #F7F7F4;
+  --felulet: #FFFFFF;
+  --szoveg: #12343B;
+  --halvany: #4D5F63;
+  --kiemeles: #2D545E;
+  --kiemeles-szoveg: #FFFFFF;
+  --link: #2D545E;
+  --diszito: #E1B382;
+  --keret: #DDE3E2;
+
+  --betu-cim: "Cormorant Garamond", Georgia, serif;
+  --betu-szoveg: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --lekerekites: 12px;
+  --lekerekites-kicsi: 8px;
+}
+
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.005em; }
+h1 { font-size: clamp(2.441rem, 1.6rem + 3.6vw, 3.815rem); line-height: 1.05; max-width: 16ch; }
+h2 { font-size: clamp(1.953rem, 1.5rem + 1.8vw, 2.441rem); }
+.lepesek h3, .szolg-lista h3, .kerdesek dt { font-size: 1.5625rem; }
+.marka-nev { font-size: 1.5625rem; font-weight: 600; }
+.marka-ikon { color: #12343B; }
+.fejlec { background: var(--felulet); }
+
+/* Nyitókép: útmutató */
+.nyito { background: var(--felulet); border-bottom: 1px solid var(--keret); }
+.nyito .keret { max-width: 60rem; }
+.nyito .lepesek { margin-top: var(--t-6); }
+.nyito .lepesek li { background: var(--hatter); border: 1px solid var(--keret); border-radius: var(--lekerekites); padding: var(--t-5); }
+.felcim { letter-spacing: .02em; }
+.lepesek li::before { font-size: 2.441rem; color: #2D545E; }
+.kiemelt-sor { font-weight: 500; }
+.szakasz-alt { background: var(--felulet); }
+.kapcsolat { background: #E9EFEE; }
+.nyito-alcim { font-size: var(--m-h3); margin-top: var(--t-7); }
+.nyito-alcim::after { content: none; }

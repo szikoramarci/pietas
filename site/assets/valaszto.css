@@ -1,0 +1,49 @@
+/* Választó oldal (Pietas Temetkezés): a dizájntokenek skálájával, a kártyák a sites/_sablonok/_valaszto/kartya.css szerint. */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: #F6F6F4; color: #1D2430; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 1rem; line-height: 1.6; }
+@media (min-width: 64rem) { body { font-size: 1.0625rem; } }
+.keret { width: min(100% - 48px, 70rem); margin-inline: auto; padding-block: clamp(48px, 6vw, 96px); }
+.bemutato-sav { background: #1d1f22; color: #f2f2f2; font-size: .875rem; padding: 12px 24px; text-align: center; }
+.bemutato-sav p { margin: 0; }
+.bemutato-sav a { color: #ffd88a; margin-left: 8px; }
+h1 { font-size: clamp(1.953rem, 1.3rem + 3vw, 3.052rem); line-height: 1.15; margin: 0 0 16px; letter-spacing: -.015em; text-wrap: balance; }
+.bevezeto { max-width: 65ch; color: #4D5664; font-size: 1.25rem; margin: 0 0 48px; }
+a { color: #592131; text-underline-offset: .15em; }
+:focus-visible { outline: 3px solid #592131; outline-offset: 3px; }
+.tovabb { margin-top: 48px; }
+.tovabb a { font-weight: 600; font-size: 1.25rem; }
+
+/* sites/_sablonok/_valaszto/kartya.css */
+.valtozatok {
+  --kartya-hatter: #fff;
+  --kartya-vonal: #d9d7de;
+  --kartya-kiemelt: #1d1b22;
+  --kartya-halvany: #5b5866;
+  --kartya-gomb: #1d1b22;
+  --kartya-gomb-szoveg: #fff;
+  --elonezet-hatter: #e9e8ec;
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 24px;
+}
+@media (min-width: 900px) { .valtozatok { grid-template-columns: 1fr 1fr; gap: 32px; } }
+@media (min-width: 1200px) { .valtozatok { grid-template-columns: repeat(3, 1fr); } }
+.valtozat { position: relative; display: flex; flex-direction: column; overflow: hidden; background: var(--kartya-hatter); border: 1px solid var(--kartya-vonal); border-radius: 12px; }
+.valtozat:hover { border-color: var(--kartya-kiemelt); }
+.elonezet { position: relative; padding: 16px 16px 0; background: var(--elonezet-hatter); }
+.elonezet img { display: block; max-width: 100%; height: auto; }
+.elonezet .asztali { width: 100%; border-radius: 8px 8px 0 0; box-shadow: 0 0 0 1px rgba(0, 0, 0, .08); }
+.elonezet .mobil { position: absolute; right: 24px; bottom: -16px; width: 26%; border: 4px solid var(--kartya-kiemelt); border-radius: 12px; box-shadow: 0 6px 18px -6px rgba(0, 0, 0, .45); }
+.valtozat .test { display: flex; flex-direction: column; flex: 1; padding: 24px 24px 24px; }
+.valtozat .szam { margin: 0 0 4px; font-size: .875rem; font-weight: 600; color: var(--kartya-halvany); }
+.valtozat h2 { margin: 0 0 8px; font-size: 1.5625rem; line-height: 1.15; }
+.valtozat .test p { margin: 0 0 16px; }
+.valtozat .leir { flex: 1; color: var(--kartya-halvany); }
+.valtozat .megnez { align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 12px 16px; border-radius: 8px; background: var(--kartya-gomb); color: var(--kartya-gomb-szoveg); font-weight: 650; text-decoration: none; }
+.valtozat .megnez::after { content: ""; position: absolute; inset: 0; }
+.tz-szam { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #1f6b3a; }
+.tz-szam[hidden] { display: none; }
+.tz-szam::before { content: ""; width: .9rem; height: .9rem; background: currentColor; clip-path: path('M7.2 13S0 8.6 0 3.9A3.9 3.9 0 0 1 7.2 1.8 3.9 3.9 0 0 1 14.4 3.9C14.4 8.6 7.2 13 7.2 13Z'); }
+.valaszto-velemenyek { margin-top: 64px; padding-top: 48px; border-top: 1px solid #d9d7de; }
+.valaszto-velemenyek h2 { margin: 0 0 8px; font-size: 1.953rem; line-height: 1.15; }
+.valaszto-velemenyek .halvany { color: #5b5866; margin: 0; max-width: 65ch; }
+.vel-hivas { font-size: 1.25rem; font-weight: 600; margin: 8px 0 0; }

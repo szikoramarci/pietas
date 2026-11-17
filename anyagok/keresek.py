@@ -34,9 +34,9 @@ A legfontosabbak:
 – a négy fő szolgáltatásnak saját aloldala lett, ide lehet majd a hirdetésekből érkezőket vezetni;
 – az ügyeletnél csak a 06 20 235 3603 szerepel, a térkép a cég Google-helyét mutatja, és új lapon nyílik.
 
-Két dologhoz kérném a segítségüket:
-– a három kiválasztott Google-vélemény szövegét, hogy szó szerint tehessük ki;
-– ha van reklám nélküli fotójuk az irodáról, azt szívesen beteszem; ha nincs, a régi oldal fotójáról tüntetem el a reklámot.
+A Rólunk részbe bekerült az irodáról készült fotó a régi oldalról; a korlátról eltüntettem a Pannónia-molinót.
+
+Egy dologhoz kérném a segítségüket: a három kiválasztott Google-vélemény szövegét küldjék el, kérem, hogy szó szerint tehessük ki.
 
 Ha valamit másképp szeretnének, a szakaszok alatt továbbra is jelezhetik, vagy egyszerűen válaszoljanak erre a levélre.
 
@@ -78,8 +78,8 @@ webness.hu""",
                  hol=[("/v2/#velemenyek", "Vélemények")]),
             dict(ido="2026-11-17 11:33", oldal="/v2/", resz="1991 óta Miskolcon",
                  szoveg="Az eredeti pietas weboldalon a cégünkről menüpontban van egy fotó kívülről az irodáról. Az emeleti korláton lévő hirdetést le kéne róla szedni (Pannónia biztosító) és akkor az mehet is ide.",
-                 allapot="var",
-                 mit="Ha van reklám nélküli eredeti fotójuk az irodáról, kérjük, küldjék el. Ha nincs, a régi oldal fotójáról mi tüntetjük el a reklámot, és ide tesszük.",
+                 allapot="kesz",
+                 mit="A régi oldal „Cégünkről” fotója került ide. A korlátról eltüntettük a Pannónia-molinót, és a korlátot a kilátszó lécek alapján rajzoltuk újra.",
                  hol=[("/v2/#rolunk", "Rólunk")]),
         ],
     ),

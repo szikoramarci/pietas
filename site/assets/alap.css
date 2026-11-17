@@ -245,6 +245,9 @@ th { font-weight: 400; }
 .tenyek-lista { padding-left: var(--t-5); }
 .foto-hely { aspect-ratio: 4 / 3; border: 2px dashed var(--keret); border-radius: var(--lekerekites); display: grid; place-items: center; padding: var(--t-5); text-align: center; color: var(--halvany); background: var(--hatter); }
 .foto-hely p { margin: 0; }
+.iroda-foto { margin: 0; }
+.iroda-foto img { display: block; width: 100%; height: auto; border-radius: var(--lekerekites); border: 1px solid var(--keret); }
+.iroda-foto figcaption { margin-top: var(--t-2); font-size: var(--m-kicsi); color: var(--halvany); }
 
 /* Vélemények */
 .velemeny-racs { display: grid; gap: var(--t-5); }

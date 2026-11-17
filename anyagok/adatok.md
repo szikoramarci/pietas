@@ -50,7 +50,8 @@ mindhárom változatba átvezetve (2026-11-17).
   iroda `ChIJN7EtBvWfQEcRqzF3Pll2r_I`, temető `ChIJP3luiCGhQEcRoVPDyzrdZO4`. A cégnek 12 Google-véleménye van.
 - **Vélemények:** a 12-ből hármat kértek: Kornélia Bésán, Beatrix Bíró („Beatrixw”), Andrea Varga; monogrammal is lehet.
   A szöveget tőlük kérjük (a Google Térképről nem másolunk).
-- **Fotó:** a régi oldal „Cégünkről” külső irodafotója, az emeleti korlát reklámja (Pannónia biztosító) nélkül.
+- **Fotó:** a régi oldal „Cégünkről” külső irodafotója (Kép-024), a korlát Pannónia-molinója nélkül: kész,
+  `anyagok/foto/` (forrás és retusáló szkript) → `site/assets/kepek/iroda-*.webp`. Élesítés előtt írásos jóváhagyás kell.
 - **Hirdetés:** Google Ads-et terveznek, ezért a fő szolgáltatásoknak saját aloldal kell (céloldal).
 - **Linkek:** a kifelé mutatók új lapon nyíljanak. Az „Emailt a nap bármely szakában írhat” mondat kimarad.
 - **Nyitókép:** a cím a főcímben; alatta a teendők, utána a szolgáltatások; a Mécses felosztása tetszik jobban.

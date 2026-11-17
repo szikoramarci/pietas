@@ -12,6 +12,8 @@
   <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő) -->
   <link rel="stylesheet" href="../assets/ki-keszitette.css">
   <script src="../assets/ki-keszitette.js" defer></script>
+  <link rel="stylesheet" href="../assets/foglalo.css">
+  <script src="../assets/foglalo.js" defer></script>
   <script src="../assets/tetszik.js" defer></script>
   <!-- Cloudflare Web Analytics (sütimentes) – token élesítés előtt:
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "[CLOUDFLARE_TOKEN]"}'></script>
@@ -80,7 +82,7 @@
 
     <section class="keret">
       <h2>Három változat</h2>
-      <p class="halvany">A tartalom ugyanaz, az arculat és a hangsúly más. Mindegyik változatban részenként jelezheti, mi tetszik és min változtatna; a lap alján összegyűjtjük, és ott kérheti a visszahívást is.</p>
+      <p class="halvany">A tartalom ugyanaz, az arculat és a hangsúly más. Mindegyik változatban részenként jelezheti, mi tetszik és min változtatna; a lap alján összegyűjtjük, és ott időpontot is foglalhat egy rövid beszélgetésre.</p>
       <ul class="valtozatok">
       <li class="valtozat">
         <div class="elonezet">
@@ -158,9 +160,9 @@
     </section>
 
     <section class="keret zaro hivas-resz" aria-labelledby="hivas-cim">
-      <h2 id="hivas-cim">Kérdése van? Hívjon most, közvetlenül engem</h2>
-      <p class="halvany">Azzal beszél, aki az oldalt megtervezte és megírta.</p>
-      <p class="hivas-sor"><a class="gomb gomb-fo hivas-gomb" href="tel:+36707021530">+36 70 702 1530</a> <span class="halvany">vagy írjon: <a href="mailto:info@webness.hu">info@webness.hu</a></span></p>
+      <h2 id="hivas-cim">Kérdése van? Beszéljük meg 15 percben</h2>
+      <p class="halvany">Azzal beszél, aki az oldalt megtervezte és megírta. Telefonon hívom, vagy Google Meeten beszélünk, ahogy Önnek kényelmesebb.</p>
+      <p class="hivas-sor"><a class="gomb gomb-fo hivas-gomb" href="#idopont" data-foglalo="ajanlat">Időpontot foglalok</a></p>
       <p><a href="../">Vissza a három változathoz</a></p>
     </section>
   </main>

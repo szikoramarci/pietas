@@ -2,8 +2,9 @@
 
    - Minden szakasz végén: „Tetszik ez a rész? [Tetszik] [Ezt másképp]” – egy koppintás (kis igen).
    - Tetszik után: „Mi tetszik benne?” – kész válaszok vagy saját szavak, egyik sem kötelező (saját érvek).
-   - A lap alján összegyűjtjük, ami tetszett, az ő szavaival (visszaidézés), majd a szándékra kérdezünk,
-     és igen/talán esetén egy konkrét visszahívási időpontot kérünk.
+   - A lap alján összegyűjtjük, ami tetszett, az ő szavaival (visszaidézés), majd a szándékra kérdezünk.
+     Minden válasz (igen, talán, még nem) után az egyetlen következő lépés: 15 perces időpont foglalása
+     (assets/foglalo.js ablak, data-foglalo gomb). Telefonszámot, e-mailt nem kérünk és nem adunk.
    - A „Nem” és az „Ezt másképp” ugyanolyan könnyű, mint az igen; semmi nincs előre kiválasztva.
    A jelzések a VEGPONT-ra mennek (functions/api/jelzes.js), és a böngészőben is megmaradnak.
 
@@ -15,17 +16,14 @@
 (() => {
   // ---- BEÁLLÍTÁSOK (demónként) -------------------------------------------------------------
   const ZARO_KERDES = "El tudja képzelni, hogy ez legyen az Ön oldala a mostani helyett?";
-  const TEL = "+36 46 431 014";      // a cég nyilvános irodai száma (weboldal, Kapcsolat), előtöltve, javítható
-  const ADATKEZELES = "/adatkezeles/";              // a demón belüli tájékoztató (sablon: _reteg/adatkezeles/)
-  const MARCELL_TEL = "+36 70 702 1530";      // Marcell közvetlen száma
   const OKOK = ["Áttekinthető", "Nyugodt, méltó hangulat", "Hasznos tartalom", "Mobilon is kényelmes"];
   const VEGPONT = "/api/jelzes";
-  // A hívás kérése fölött: Marcell fotója és egy rövid, szó szerinti vélemény (a megkeresett céghez nem köthető).
+  // A foglalás kérése fölött: Marcell fotója és egy rövid, szó szerinti vélemény (a megkeresett céghez nem köthető).
   const KERES_KEP = "https://webness.hu/assets/marcell.jpg";
   const KERES_VELEMENY = ["Bátran ajánlom őket mindenkinek, aki nemcsak kivitelezőt, hanem együtt gondolkodó partnert keres.",
                           "Kocziszky Ádám, Salzgitter Mannesmann"];
   // A demó mobilos alsó Hívás/Email sávja: a bejelentés fölé kerül. Más osztálynév esetén bővítsd.
-  const ALSO_SAV = ".hivassav, .also-sav";
+  const ALSO_SAV = ".fg-also, .hivassav, .also-sav";
   // A szakaszon belül ebbe a tárolóba kerül a sáv (ha nincs, magába a szakaszba).
   const TAROLO = ".keret, .wrap, .container, .nyito__szoveg";
   // -------------------------------------------------------------------------------------------
@@ -67,9 +65,8 @@
   hir.setAttribute("aria-live", "polite");
   document.body.appendChild(hir);
   const igazit = () => {
-    const sav = document.querySelector(ALSO_SAV);
-    const lathato = sav && getComputedStyle(sav).display !== "none" && getComputedStyle(sav).position === "fixed";
-    hir.style.setProperty("--tz-also", lathato ? sav.getBoundingClientRect().height + "px" : "0px");
+    const sav = [...document.querySelectorAll(ALSO_SAV)].find((x) => getComputedStyle(x).display !== "none" && getComputedStyle(x).position === "fixed");
+    hir.style.setProperty("--tz-also", sav ? sav.getBoundingClientRect().height + "px" : "0px");
   };
   igazit();
   window.addEventListener("resize", igazit);
@@ -233,14 +230,7 @@
   const zaroPanel = ossz.querySelector(".tz-zaro-panel");
   const valaszGombok = ossz.querySelectorAll(".tz-valaszok button");
 
-  const napNev = (d) => ["vasárnap", "hétfőn", "kedden", "szerdán", "csütörtökön", "pénteken", "szombaton"][d.getDay()];
-  const kovetkezoMunkanap = () => {
-    const d = new Date(); d.setDate(d.getDate() + 1);
-    while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
-    const holnap = new Date(); holnap.setDate(holnap.getDate() + 1);
-    return d.toDateString() === holnap.toDateString() ? "holnap" : napNev(d);
-  };
-  const nagy = (t) => t[0].toUpperCase() + t.slice(1);
+  const foglaloGomb = (honnan) => `<a class="tz-kerem" href="#idopont" data-foglalo="${honnan}">Időpontot foglalok</a>`;
 
   valaszGombok.forEach((b) => b.addEventListener("click", () => {
     valaszGombok.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
@@ -249,37 +239,23 @@
     kuld({ tipus: "zaro", valasz: b.dataset.v });
 
     if (b.dataset.v === "meg-nem") {
-      zaroPanel.innerHTML = `<p>Rendben, köszönöm! Ha kérdése lesz, hívjon: <a href="tel:${esc(MARCELL_TEL.replace(/[^0-9+]/g, ""))}">${esc(MARCELL_TEL)}</a>, vagy írjon: <a href="mailto:info@webness.hu">info@webness.hu</a>. A többi változatot <a href="../">itt találja</a>.</p>`;
+      zaroPanel.innerHTML = `
+        <p>Rendben, köszönöm! Ha később kérdése lesz, foglaljon egy 15 perces beszélgetést, és átbeszéljük.</p>
+        ${foglaloGomb("zaro-meg-nem")}
+        <p class="tz-apro">A többi változatot <a href="../">itt találja</a>.</p>`;
       return;
     }
-    const nap = kovetkezoMunkanap();
     zaroPanel.innerHTML = `
       <div class="tz-ki"><img src="${esc(KERES_KEP)}" alt="" width="48" height="48" loading="lazy">
         <p><strong>Szikora Marcell</strong>, webness.hu<q>${esc(KERES_VELEMENY[0])}</q><span>${esc(KERES_VELEMENY[1])}</span></p></div>
-      <p class="tz-zaro-cim">${b.dataset.v === "igen" ? "Örülök!" : "Szívesen válaszolok."} Felhívhatom 10 percre, hogy átbeszéljük, mit tenne még bele?</p>
-      <label for="tz-tel">Telefonszám</label>
-      <input id="tz-tel" type="tel" autocomplete="tel" value="${esc(TEL.startsWith("[") ? "" : TEL)}">
-      <p class="tz-zaro-cimke" id="tz-ido-cim">Mikor hívhatom?</p>
-      <div class="tz-valaszok tz-idopontok" role="group" aria-labelledby="tz-ido-cim">
-        <button type="button" data-ido="${nap} délelőtt" aria-pressed="false">${nagy(nap)} délelőtt</button>
-        <button type="button" data-ido="${nap} délután" aria-pressed="false">${nagy(nap)} délután</button>
-        <button type="button" data-ido="másik nap" aria-pressed="false">Másik nap</button>
-      </div>
-      <button type="button" class="tz-kerem">Kérem a hívást</button>
-      <p class="tz-apro">A számot csak a visszahíváshoz használom. <a href="${ADATKEZELES}">Adatkezelési tájékoztató</a><br>Inkább most beszélne? Hívjon: <a href="tel:${esc(MARCELL_TEL.replace(/[^0-9+]/g, ""))}">${esc(MARCELL_TEL)}</a>, vagy írjon: <a href="mailto:info@webness.hu">info@webness.hu</a></p>`;
-    let ido = "";
-    zaroPanel.querySelectorAll("[data-ido]").forEach((g) => g.addEventListener("click", () => {
-      ido = g.dataset.ido;
-      zaroPanel.querySelectorAll("[data-ido]").forEach((x) => x.setAttribute("aria-pressed", String(x === g)));
-    }));
-    zaroPanel.querySelector(".tz-kerem").addEventListener("click", () => {
-      const tel = zaroPanel.querySelector("#tz-tel").value.trim();
-      if (tel.replace(/\D/g, "").length < 8) {
-        if (!zaroPanel.querySelector(".tz-hiba")) zaroPanel.querySelector(".tz-kerem").insertAdjacentHTML("afterend", '<p class="tz-hiba" role="alert">Adjon meg egy telefonszámot, amelyen elérhetem.</p>');
-        return;
-      }
-      kuld({ tipus: "hivas", telefon: tel.slice(0, 40), idopont: ido || "mindegy", valasz: allapot.zaro });
-      zaroPanel.innerHTML = `<p class="tz-zaro-cim">Köszönöm! ${ido && ido !== "másik nap" ? esc(nagy(ido)) + " hívom" : "Hamarosan hívom"} a ${esc(tel)} számon.</p>`;
-    });
+      <p class="tz-zaro-cim">${b.dataset.v === "igen" ? "Örülök!" : "Szívesen válaszolok."} Foglaljon egy 15 perces beszélgetést, és átbeszéljük, mit tenne még bele.</p>
+      ${foglaloGomb(`zaro-${b.dataset.v}`)}
+      <p class="tz-apro">Telefonon hívom, vagy Google Meeten beszélünk, ahogy Önnek kényelmesebb. Ingyenes, és semmire nem kötelez.</p>`;
   }));
+
+  // Sikeres foglalás után (assets/foglalo.js) a záró rész visszaigazol.
+  window.addEventListener("webness-foglalva", (e) => {
+    const ido = e.detail && e.detail.idopont;
+    zaroPanel.innerHTML = `<p class="tz-zaro-cim">Köszönöm! ${ido ? `Lefoglalva: ${esc(ido)}.` : "Lefoglalva."} A meghívót a Google-naptár küldi.</p>`;
+  });
 })();

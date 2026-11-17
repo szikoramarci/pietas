@@ -4,12 +4,13 @@
 // Beállítások (Cloudflare Pages > Settings):
 //   VISSZAJELZES  – KV namespace binding: a jelzések tárolása (egy jelzés = egy bejegyzés)
 //   ERTESITO_URL  – opcionális webhook (pl. ntfy, Slack, Telegram-bot): azonnali értesítés Marcellnek
-//                   hívásigényről, a záró kérdés válaszáról és az „Ezt másképp” szövegekről
+//                   foglalásról, a záró kérdés válaszáról és az „Ezt másképp” szövegekről
+//   (foglalo = megnyitotta az időpontfoglalót, foglalas = sikeresen foglalt; a foglalásról a webness.hu is e-mailt küld)
 // Ha egyik sincs beállítva, a jelzés csak a Functions naplóban jelenik meg.
 
 const CEG = "temetkezes-miskolc-pietas";
-const TIPUSOK = new Set(["tetszik", "visszavonta", "miert", "maskepp", "zaro", "hivas"]);
-const ERTESIT = new Set(["hivas", "zaro", "maskepp"]);
+const TIPUSOK = new Set(["tetszik", "visszavonta", "miert", "maskepp", "zaro", "hivas", "foglalo", "foglalas"]);
+const ERTESIT = new Set(["hivas", "zaro", "maskepp", "foglalas"]);
 const szoveg = (v, max) => String(v ?? "").trim().slice(0, max);
 
 export async function onRequestPost({ request, env }) {

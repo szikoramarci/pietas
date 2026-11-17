@@ -390,9 +390,11 @@ def oldal(v, d):
   <link rel="stylesheet" href="../assets/betuk/betuk.css">
   <link rel="stylesheet" href="../assets/alap.css">
   <link rel="stylesheet" href="../assets/{v}.css">
-  <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő): „Ki készítette?” és „Tetszik ez a rész?” -->
+  <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő): „Ki készítette?”, időpontfoglaló és „Tetszik ez a rész?” -->
   <link rel="stylesheet" href="../assets/ki-keszitette.css">
   <script src="../assets/ki-keszitette.js" defer></script>
+  <link rel="stylesheet" href="../assets/foglalo.css">
+  <script src="../assets/foglalo.js" defer></script>
   <link rel="stylesheet" href="../assets/tetszik.css">
   <script src="../assets/tetszik.js" defer></script>
   <!-- Cloudflare Web Analytics (sütimentes) – token élesítés előtt:
@@ -471,7 +473,7 @@ VELEMENY_RESZ = """<section class="valaszto-velemenyek" aria-labelledby="vel-cim
       <h2 id="vel-cim">Akiknek már készítettem weboldalt</h2>
       <p class="halvany"><span data-kk-szam>16</span> ügyfél, az ő szavaikkal, változtatás nélkül, ahogy a webness.hu-n is olvashatók.</p>
       <div data-kk-velemenyek></div>
-      <p class="vel-hivas">Kérdése van? Hívjon most, közvetlenül engem: <a href="tel:+36707021530">+36 70 702 1530</a></p>
+      <p class="vel-hivas">Kérdése van? Beszéljük meg 15 percben: <a href="#idopont" data-foglalo="valaszto">Időpontot foglalok</a></p>
     </section>"""
 
 
@@ -489,6 +491,8 @@ def valaszto():
   <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő) -->
   <link rel="stylesheet" href="assets/ki-keszitette.css">
   <script src="assets/ki-keszitette.js" defer></script>
+  <link rel="stylesheet" href="assets/foglalo.css">
+  <script src="assets/foglalo.js" defer></script>
   <script src="assets/tetszik.js" defer></script>
 </head>
 <body>
@@ -525,6 +529,8 @@ def ajanlat():
   <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő) -->
   <link rel="stylesheet" href="../assets/ki-keszitette.css">
   <script src="../assets/ki-keszitette.js" defer></script>
+  <link rel="stylesheet" href="../assets/foglalo.css">
+  <script src="../assets/foglalo.js" defer></script>
   <script src="../assets/tetszik.js" defer></script>
   <!-- Cloudflare Web Analytics (sütimentes) – token élesítés előtt:
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "[CLOUDFLARE_TOKEN]"}}'></script>
@@ -593,7 +599,7 @@ def ajanlat():
 
     <section class="keret">
       <h2>Három változat</h2>
-      <p class="halvany">A tartalom ugyanaz, az arculat és a hangsúly más. Mindegyik változatban részenként jelezheti, mi tetszik és min változtatna; a lap alján összegyűjtjük, és ott kérheti a visszahívást is.</p>
+      <p class="halvany">A tartalom ugyanaz, az arculat és a hangsúly más. Mindegyik változatban részenként jelezheti, mi tetszik és min változtatna; a lap alján összegyűjtjük, és ott időpontot is foglalhat egy rövid beszélgetésre.</p>
       <ul class="valtozatok">
 {kartyak('../', 'h3')}
       </ul>
@@ -633,9 +639,9 @@ def ajanlat():
     </section>
 
     <section class="keret zaro hivas-resz" aria-labelledby="hivas-cim">
-      <h2 id="hivas-cim">Kérdése van? Hívjon most, közvetlenül engem</h2>
-      <p class="halvany">Azzal beszél, aki az oldalt megtervezte és megírta.</p>
-      <p class="hivas-sor"><a class="gomb gomb-fo hivas-gomb" href="tel:+36707021530">+36 70 702 1530</a> <span class="halvany">vagy írjon: <a href="mailto:info@webness.hu">info@webness.hu</a></span></p>
+      <h2 id="hivas-cim">Kérdése van? Beszéljük meg 15 percben</h2>
+      <p class="halvany">Azzal beszél, aki az oldalt megtervezte és megírta. Telefonon hívom, vagy Google Meeten beszélünk, ahogy Önnek kényelmesebb.</p>
+      <p class="hivas-sor"><a class="gomb gomb-fo hivas-gomb" href="#idopont" data-foglalo="ajanlat">Időpontot foglalok</a></p>
       <p><a href="../">Vissza a három változathoz</a></p>
     </section>
   </main>

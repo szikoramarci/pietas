@@ -61,16 +61,18 @@
   // A megkeresett céghez köthető személy véleményét itt vedd ki, névvel (pl. TudásTárs-demónál "Kerülő Tünde").
   var KIHAGY = ["Koncz Péter"];  // a megkeresett céghez köthető személy (anyagok/adatok.md)
 
-  // A demó mobilos alsó Hívás/Email sávja: a gomb fölé kerül. Más osztálynév esetén bővítsd.
-  var ALSO_SAV = ".hivassav, .also-sav";
+  // A mobilos alsó sáv (a réteg foglalósávja, vagy a demó Hívás/Email sávja): a gomb fölé kerül. Más osztálynév esetén bővítsd.
+  var ALSO_SAV = ".fg-also, .hivassav, .also-sav";
 
-  // Marcell közvetlen száma: a demóból nem lehet kimenni, ezért a kapcsolat telefon (és email).
-  var MARCELL_TEL = "+36 70 702 1530";
-  var EMAIL = "info@webness.hu";
+  // A demó egyetlen kapcsolatfelvételi lépése az időpontfoglalás (assets/foglalo.js, data-foglalo gomb).
+  // Telefonszám és e-mail nem szerepel a rétegben.
   // -------------------------------------------------------------------------------------------
 
-  // tel: link a megjelenített számból (szóközök, kötőjelek nélkül)
-  function telHref(t) { return String(t).replace(/[^0-9+]/g, ""); }
+  // A foglaló gomb: a foglalo.js nyitja meg (a demón belül, ablakban).
+  function foglaloHtml(honnan) {
+    return '<div class="kk-hivas"><p class="kk-hivas-cim">Kérdése van? Beszéljük meg 15 percben, telefonon vagy Google Meeten:</p>' +
+      '<p class="kk-linkek"><a class="kk-gomb" href="#idopont" data-foglalo="' + honnan + '">Időpontot foglalok</a></p></div>';
+  }
 
   var LATHATO = VELEMENYEK.filter(function (v) { return KIHAGY.indexOf(v.nev) < 0; });
   var OSSZES_VELEMENY = LATHATO.length;
@@ -109,9 +111,7 @@
         '<img src="' + KEP + 'marcell.jpg" alt="Szikora Marcell portréja" width="400" height="500" loading="lazy" decoding="async">' +
         "<div>" +
           '<p class="kk-nev"><strong>Szikora Marcell</strong><br>szoftvermérnök, a Webness alapítója, Tiszanagyfaluból</p>' +
-          '<div class="kk-hivas"><p class="kk-hivas-cim">Kérdése van? Hívjon most, közvetlenül engem:</p>' +
-          '<p class="kk-linkek"><a class="kk-gomb" href="tel:' + telHref(MARCELL_TEL) + '">' + esc(MARCELL_TEL) + "</a>" +
-          '<span class="kk-halvany">vagy írjon: <a href="mailto:' + EMAIL + '">' + EMAIL + "</a></span></p></div>" +
+          foglaloHtml("ki-keszitette") +
           "<p>Több mint 15 éve készítek weboldalakat, webshopokat és egyedi rendszereket, eddig 116-nál is többet adtam át. Az Accenture-nél vezető fejlesztő voltam, ma a WorkFlex nemzetközi startupnál vagyok tech lead.</p>" +
           "<p>Velem közvetlenül dolgoznak: azzal beszélnek, aki megtervezi és megírja az oldalt. Ezt az oldalt előre elkészítettem, hogy ne kelljen elképzelni, milyen lehetne: ki lehet próbálni, mobilon is." + (KOZOS_PONT ? " " + esc(KOZOS_PONT) : "") + "</p>" +
           '<p class="kk-halvany"><strong>Akiknek már dolgoztam:</strong> Salzgitter Mannesmann, D-Link, Miskolci Nemzeti Színház, Jánosik és Társai, Orha Művek.</p>' +
@@ -123,9 +123,7 @@
         '<div class="kk-velemenyek">' +
         LATHATO.map(function (v) { return velemenyHtml(v, "h4"); }).join("") +
         "</div>" +
-        '<div class="kk-hivas kk-tovabb"><p class="kk-hivas-cim">Kérdése van? Hívjon most, közvetlenül engem:</p>' +
-        '<p class="kk-linkek"><a class="kk-gomb" href="tel:' + telHref(MARCELL_TEL) + '">' + esc(MARCELL_TEL) + "</a>" +
-        '<span class="kk-halvany">vagy írjon: <a href="mailto:' + EMAIL + '">' + EMAIL + "</a></span></p></div>" +
+        foglaloHtml("ki-keszitette-alja").replace('class="kk-hivas"', 'class="kk-hivas kk-tovabb"') +
       "</section>" +
     "</div>";
 
@@ -141,11 +139,13 @@
 
   // A mobilos alsó sáv fölé emeljük a gombot, ha van ilyen sáv és látszik.
   function igazit() {
-    var sav = document.querySelector(ALSO_SAV);
     var magas = 0;
-    if (sav && getComputedStyle(sav).display !== "none" && getComputedStyle(sav).position === "fixed") {
+    Array.prototype.some.call(document.querySelectorAll(ALSO_SAV), function (sav) {
+      var cs = getComputedStyle(sav);
+      if (cs.display === "none" || cs.position !== "fixed") return false;
       magas = sav.getBoundingClientRect().height;
-    }
+      return true;
+    });
     gomb.style.setProperty("--kk-also", magas ? magas + 10 + "px" : "0px");
   }
   igazit();

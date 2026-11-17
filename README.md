@@ -15,7 +15,7 @@ site/                     ← a Cloudflare Pages gyökere (a functions/ miatt en
   assets/                 ← alap.css + v1–v3.css, betűk (saját tárhelyről), réteg JS/CSS
   valaszto/               ← előnézeti képek (elonezet.py)
   functions/_middleware.js  ← PIN-kódos belépés (DEMO_PIN)
-  functions/api/jelzes.js   ← „Tetszik ez a rész?” jelzések → VISSZAJELZES KV
+  functions/api/jelzes.js   ← „Tetszik ez a rész?” és időpontfoglaló jelzések → VISSZAJELZES KV
 anyagok/
   adatok.md               ← tényadatok forrással, nyitott kérdések
   generator.py            ← a változatok, a választó és az ajánlatoldal egy tartalomból
@@ -42,10 +42,10 @@ python3 sites/_sablonok/_dizajn/kontraszt.py ../pietas/site/assets/v1.css
 | Build command / output | nincs |
 | `DEMO_PIN` | titkosított környezeti változó, 6 számjegy |
 | `VISSZAJELZES` | KV-kötés a jelzésekhez |
-| `ERTESITO_URL` | opcionális webhook a hívásigényekhez |
+| `ERTESITO_URL` | opcionális webhook (foglalás, záró válasz, „Ezt másképp”) |
 
 ## Élesítéskor (ha az ügyfél kéri)
 
 A választott változat lesz a gyökér; a réteg törlendő: `ajanlat/`, `adatkezeles/`, `valaszto/`,
-`functions/`, `assets/ki-keszitette.*`, `assets/tetszik.*`, a bemutató sáv, a `noindex`, a `robots.txt`
+`functions/`, `assets/ki-keszitette.*`, `assets/foglalo.*`, `assets/tetszik.*`, a bemutató sáv, a `noindex`, a `robots.txt`
 tiltása. A régi WordPress-címek 301-es átirányítása ekkor kerül be (`_redirects`).

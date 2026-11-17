@@ -158,3 +158,6 @@
 
 @media (prefers-reduced-motion: reduce) { .tz-hir { transition: none; } }
 @media print { .tz-sor, .tz-osszegzes, .tz-hir { display: none; } }
+/* a foglaló gomb link (assets/foglalo.js nyitja) */
+a.tz-kerem { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: #fff; }
+a.tz-kerem:hover { color: #fff; }

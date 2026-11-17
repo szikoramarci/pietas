@@ -43,12 +43,10 @@ h3 { font-weight: 600; }
 .marka-al { color: #E7CFC2; }
 .fejlec nav a[href]:hover, .fejlec nav a:focus-visible { border-bottom-color: #F1AD48; }
 
-/* Nyitókép: a logó íve nagyban */
+/* Nyitókép: a Mécses felosztása (az ügyfél kérése, 2026-11-17), jobbra az ügyeleti tábla a logó ívével */
 .nyito { background: linear-gradient(var(--hatter), var(--felulet)); }
-.nyito-jel { display: grid; justify-items: center; gap: var(--t-5); }
-.nagy-jel { width: clamp(120px, 18vw, 190px); height: auto; aspect-ratio: 236 / 504; color: #592131; }
-.nyito-jel .tenyek { justify-content: center; margin: 0; }
-@media (max-width: 899px) { .nyito-jel { justify-items: start; } .nagy-jel { display: none; } .nyito-jel .tenyek { justify-content: flex-start; } }
+.ugyelet-tabla { border-top: 4px solid #592131; box-shadow: 0 18px 40px -28px rgba(89, 33, 49, .45); }
+.tabla-jel { color: #592131; }
 .felcim { color: #7A2E43; font-weight: 600; letter-spacing: .02em; }
 h2::after { content: ""; display: block; width: var(--t-7); height: 3px; background: var(--diszito); margin-top: var(--t-3); border-radius: 2px; }
 .lepesek li::before { color: #592131; }

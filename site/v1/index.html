@@ -12,13 +12,15 @@
   <link rel="stylesheet" href="../assets/betuk/betuk.css">
   <link rel="stylesheet" href="../assets/alap.css">
   <link rel="stylesheet" href="../assets/v1.css">
-  <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő): „Ki készítette?”, időpontfoglaló és „Tetszik ez a rész?” -->
+  <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő): „Ki készítette?”, időpontfoglaló, „Tetszik ez a rész?”, kérések -->
   <link rel="stylesheet" href="../assets/ki-keszitette.css">
   <script src="../assets/ki-keszitette.js" defer></script>
   <link rel="stylesheet" href="../assets/foglalo.css">
   <script src="../assets/foglalo.js" defer></script>
   <link rel="stylesheet" href="../assets/tetszik.css">
   <script src="../assets/tetszik.js" defer></script>
+  <link rel="stylesheet" href="../assets/keresek.css">
+  <script src="../assets/keresek.js" defer></script>
   <!-- Cloudflare Web Analytics (sütimentes) – token élesítés előtt:
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "[CLOUDFLARE_TOKEN]"}'></script>
   -->
@@ -37,7 +39,11 @@
   </svg>
   <div class="bemutato-sav" role="note">
     <p><strong>Bemutató ajánlat – nem a Pietas Temetkezés hivatalos weboldala.</strong> Változat: Mécses.</p>
-    <p class="sav-linkek"><a href="../">Mindhárom változat</a> <a href="../ajanlat/">Mit hoz az új oldal, és ki készítette?</a></p>
+    <p class="sav-linkek"><a href="../">Mindhárom változat</a> <a href="../keresek/">Kérései és a javítások</a> <a href="../ajanlat/">Mit hoz az új oldal, és ki készítette?</a></p>
+  </div>
+  <div class="valtozas-sav" data-kor="2026-11-17-du" hidden>
+    <p><strong>Elkészültek a november 17-i délutáni kéréseinek módosításai.</strong> <a href="../keresek/">Megnézem, mit és hol javítottunk</a></p>
+    <button type="button" class="valtozas-bezar" aria-label="Bezárás">×</button>
   </div>
 
   <header class="fejlec">
@@ -74,7 +80,7 @@
       <div class="keret nyito-racs">
         <div class="nyito-szoveg">
           <p class="felcim">Pietas Temetkezés, Miskolc</p>
-          <h1 id="nyito-cim">Temetés teljes ügyintézéssel, Miskolcon 1991 óta</h1>
+          <h1 id="nyito-cim">Temetés teljes ügyintézéssel Miskolcon, a Csabai kapu 16. alatt</h1>
           <p class="bevezeto">Átvesszük a temetés minden teendőjét: az elhunyt elszállítását, a hivatalos ügyeket és a búcsúztatás szervezését.</p>
           <ul class="tenyek">
             <li>1991 óta Miskolcon</li>
@@ -92,29 +98,9 @@
           <p class="tabla-szam"><a class="tel" href="tel:+36202353603">06 20 235 3603</a></p>
           <dl>
             <div><dt>Iroda, hétfőtől péntekig <span class="nowrap">8:30–15:30</span></dt><dd><a class="tel" href="tel:+3646431014">06 46 431 014</a><br><a class="tel" href="tel:+36203686533">06 20 368 6533</a></dd></div>
-            <div><dt>Címünk</dt><dd>3529 Miskolc, Csabai kapu 16.</dd></div>
+            <div><dt>Címünk</dt><dd>3529 Miskolc, Csabai kapu 16.<br><a href="https://www.google.com/maps/search/?api=1&amp;query=PIETAS+Temetkez%C3%A9s%2C+Miskolc&amp;query_place_id=ChIJN7EtBvWfQEcRqzF3Pll2r_I" target="_blank" rel="noopener">Térkép és útvonal</a></dd></div>
           </dl>
         </aside>
-      </div>
-    </section>
-
-    <section class="szakasz szakasz-alt" id="kerdesek" aria-labelledby="kerdesek-cim">
-      <!-- A kérdések a régi oldal saját kérdéseiből és tájékoztatóiból, átfogalmazva (adatok.md). -->
-      <div class="keret">
-        <h2 id="kerdesek-cim">Amit a családok először kérdeznek</h2>
-        <dl class="kerdesek">
-          <div><dt>Otthon hunyt el. Kit hívjak először?</dt><dd>A háziorvost vagy az orvosi ügyeletet. Ha az orvos végzett, hívja ügyeletünket: <a class="tel" href="tel:+36202353603">06 20 235 3603</a>.</dd></div>
-          <!-- A költség négy része az ügyfél felsorolása szerint (demó-visszajelzés, 2026-11-17). -->
-          <div class="ket-sor"><dt>Mennyibe kerül a temetés?</dt><dd>A költség négy részből áll össze:
-            <ol class="koltseg-reszek">
-              <li>a temetkezés: szállítás, szakszemélyzet, ügyintézés, hamvasztás és a kellékek</li>
-              <li>a temető díjai: sírhely, sírnyitás, a ravatalozó használata</li>
-              <li>a kórháznak fizetendő hűtési díj és halottkiadás</li>
-              <li>az egyházi vagy polgári búcsúztató díja</li>
-            </ol>
-            Árajánlatot telefonon kérhet: <a class="tel" href="tel:+3646431014">06 46 431 014</a>.</dd></div>
-          <div><dt>Választhatunk temetőt?</dt><dd>Igen. Miskolcon bármelyik temetkezési szolgáltató bármelyik temetőben temethet.</dd></div>
-        </dl>
       </div>
     </section>
 
@@ -125,24 +111,18 @@
         <ol class="lepesek">
           <li><h3>Hívja a háziorvost vagy az orvosi ügyeletet</h3><p>Az orvos elvégzi a halottvizsgálatot, kiállítja a bizonyítványt, és engedélyezi az elszállítást.</p></li>
           <li><h3>Hívja ügyeletünket: <a class="tel" href="tel:+36202353603">06 20 235 3603</a></h3><p>A nap bármely órájában. Az orvos előírása szerint az elhunytat halottasházba vagy kórházi patológiára visszük.</p></li>
-          <li><h3>Jöjjön be az irodába</h3><p>Hozza a halottvizsgálati bizonyítványt. Itt megbeszéljük a temetés részleteit, a többi ügyintézést mi végezzük.</p></li>
+          <li><h3>Jöjjön be az irodába</h3><p>Hozza magával az iratokat, a listát lent találja. Itt megbeszéljük a temetés részleteit, a többi ügyintézést mi végezzük.</p></li>
         </ol>
-        <p class="kiemelt-sor">Ha a temetést is ránk bízza, Miskolcon belül az elszállítás díjmentes.</p>
-        <div class="ketoszlop">
-          <div>
-            <h3 class="alcim">Ha kórházban történt</h3>
-            <p>A kórház a halottvizsgálati bizonyítványt állítja ki. Ez néhány napig is tarthat.</p>
-            <p>Addig is jöjjön be az irodába: az időpont kivételével mindent megbeszélhetünk.</p>
-          </div>
-          <div>
-            <h3 class="alcim">Ezeket hozza magával</h3>
-            <ul class="iratok">
+        <h3 class="alcim">Ha kórházban történt</h3>
+        <p>A kórház a halottvizsgálati bizonyítványt állítja ki. Ez néhány napig is tarthat. Addig is jöjjön be az irodába: az időpont kivételével mindent megbeszélhetünk.</p>
+        <div class="iratok-doboz">
+          <h3 class="alcim">Ezeket hozza magával, otthoni és kórházi halálesetnél is</h3>
+          <ul class="iratok">
               <li>az elhunyt személyi igazolványa és lakcímkártyája</li>
               <li>a halottvizsgálati bizonyítvány</li>
               <li>születési vagy házassági anyakönyvi kivonat, ha megvan; ha nem, segítünk beszerezni</li>
               <li>külföldi elhunytnál az útlevél</li>
             </ul>
-          </div>
         </div>
         <p class="halvany">Meghatalmazással bárki intézheti a temetést a temettető helyett.</p>
       </div>
@@ -153,11 +133,11 @@
         <h2 id="szolgaltatasok-cim">Temetés és minden, ami hozzá tartozik</h2>
         <p class="bevezeto-kicsi">A temetéshez szükséges hivatali ügyeket is mi intézzük.</p>
         <ul class="szolg-lista">
-          <li><h3>Hamvasztásos temetés</h3><p>Teljes ügyintézéssel. Urnát a bemutatótermünkben választhat.</p></li>
-          <li><h3>Koporsós temetés</h3><p>Teljes ügyintézéssel. Koporsót, sírjelzőt és sírtáblát a bemutatótermünkben választhat.</p></li>
+          <li><h3>Hamvasztásos temetés</h3><p>Teljes ügyintézéssel. Urnát a bemutatótermünkben választhat.</p><p class="reszletek"><a href="hamvasztasos-temetes/">Részletek<span class="rejtett">: hamvasztásos temetés</span> →</a></p></li>
+          <li><h3>Koporsós temetés</h3><p>Teljes ügyintézéssel. Koporsót, sírjelzőt és sírtáblát a bemutatótermünkben választhat.</p><p class="reszletek"><a href="koporsos-temetes/">Részletek<span class="rejtett">: koporsós temetés</span> →</a></p></li>
+          <li><h3>Halottszállítás</h3><p>Belföldön, és a szomszédos országokból is, a szükséges hatósági és konzuli iratokkal.</p><p class="reszletek"><a href="halottszallitas/">Részletek<span class="rejtett">: halottszállítás</span> →</a></p></li>
+          <li><h3>Kegyeleti szerződés</h3><p>Előre is megállapodhat velünk a temetésről. A részleteket egyéni megbeszélés szerint rögzítjük.</p><p class="reszletek"><a href="kegyeleti-szerzodes/">Részletek<span class="rejtett">: kegyeleti szerződés</span> →</a></p></li>
           <li><h3>Koszorú friss virágból</h3><p>Csak megrendelésre készül, katalógusból választhat, és díjmentesen kiszállítjuk a temetésre.</p></li>
-          <li><h3>Kegyeleti szerződés</h3><p>Előre is megállapodhat velünk a temetésről. A részleteket egyéni megbeszélés szerint rögzítjük.</p></li>
-          <li><h3>Halottszállítás</h3><p>Belföldön, és a szomszédos országokból is, a szükséges hatósági és konzuli iratokkal.</p></li>
         </ul>
         <div class="temeto">
           <h3>A Hejőcsabai Római Katolikus temető üzemeltetője</h3>
@@ -166,7 +146,7 @@
             <div>
               <p><strong>A temető címe:</strong> 3508 Miskolc, <span class="nowrap">Csabavezér út 1.</span></p>
               <p>Autóval a Segesvári utca felől lehet megközelíteni.</p>
-              <p><a class="gomb gomb-masod" href="https://www.google.com/maps/search/?api=1&amp;query=3508+Miskolc%2C+Csabavez%C3%A9r+%C3%BAt+1."><svg aria-hidden="true"><use href="#i-hely"/></svg>Térkép és útvonal a temetőhöz</a></p>
+              <p><a class="gomb gomb-masod" href="https://www.google.com/maps/search/?api=1&amp;query=Hej%C5%91csabai+r%C3%B3mai+katolikus+temet%C5%91&amp;query_place_id=ChIJP3luiCGhQEcRoVPDyzrdZO4" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-hely"/></svg>Térkép és útvonal a temetőhöz</a></p>
             </div>
             <table class="nyitva">
               <caption>A temető nyitvatartása</caption>
@@ -177,6 +157,25 @@
             </table>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="szakasz szakasz-alt" id="kerdesek" aria-labelledby="kerdesek-cim">
+      <!-- A kérdések a régi oldal saját kérdéseiből és tájékoztatóiból, átfogalmazva (adatok.md). -->
+      <div class="keret">
+        <h2 id="kerdesek-cim">Amit a családok először kérdeznek</h2>
+        <dl class="kerdesek">
+          <div><dt>Otthon hunyt el. Kit hívjak először?</dt><dd>A háziorvost vagy az orvosi ügyeletet. Ha az orvos végzett, hívja ügyeletünket: <a class="tel" href="tel:+36202353603">06 20 235 3603</a>.</dd></div>
+          <div class="ket-sor"><dt>Mennyibe kerül a temetés?</dt><dd>A költség négy részből áll össze:
+            <ol class="koltseg-reszek">
+              <li>a temetkezés: szállítás, szakszemélyzet, ügyintézés, hamvasztás és a kellékek</li>
+              <li>a temető díjai: sírhely, sírnyitás, a ravatalozó használata</li>
+              <li>a kórháznak fizetendő hűtési díj és halottkiadás</li>
+              <li>az egyházi vagy polgári búcsúztató díja</li>
+            </ol>
+            Árajánlatot telefonon kérhet: <a class="tel" href="tel:+3646431014">06 46 431 014</a>.</dd></div>
+          <div><dt>Választhatunk temetőt?</dt><dd>Igen. Miskolcon bármelyik temetkezési szolgáltató bármelyik temetőben temethet.</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -192,20 +191,23 @@
             <li>Alapító tagjai vagyunk a Magyar Temetkezési Szolgáltatók Országos Szakegyesületének.</li>
           </ul>
         </div>
+        <!-- FOTÓ: a régi oldal „Cégünkről” fotója az irodáról, az emeleti korlát reklámja (Pannónia biztosító)
+             nélkül (az ügyfél kérése, 2026-11-17). Reklám nélküli eredeti kérve; ha nincs, retusálva. -->
         <figure class="foto-hely" aria-label="Fotó helye">
-          <p>[Ide kerül egy fotó az irodáról vagy a bemutatóteremről]</p>
+          <p>[Ide kerül az iroda fotója a régi oldalról, a korlátról levett reklám nélkül]</p>
         </figure>
       </div>
     </section>
 
     <section class="szakasz" id="velemenyek" aria-labelledby="velemenyek-cim">
-      <!-- VÉLEMÉNYEK: csak valós, hozzájárulással közölt vélemény kerülhet ide (Fttv.). Most helyőrzők. -->
+      <!-- VÉLEMÉNYEK: a cég 12 Google-véleményéből az általuk kiválasztott három (2026-11-17), monogrammal.
+           A szöveg szó szerint, tőlük kérve (a Google Térképről nem másolunk, SZABALYOK.md). -->
       <div class="keret">
         <h2 id="velemenyek-cim">Amit a családok írtak rólunk</h2>
         <div class="velemeny-racs">
-          <figure class="velemeny-hely"><blockquote><p>[Ide kerül egy család véleménye, az írója hozzájárulásával.]</p></blockquote><figcaption>[Név vagy monogram]</figcaption></figure>
-          <figure class="velemeny-hely"><blockquote><p>[Ide kerül egy második vélemény, az írója hozzájárulásával.]</p></blockquote><figcaption>[Név vagy monogram]</figcaption></figure>
-          <figure class="velemeny-hely"><blockquote><p>[Ide kerül egy harmadik vélemény, az írója hozzájárulásával.]</p></blockquote><figcaption>[Név vagy monogram]</figcaption></figure>
+          <figure class="velemeny-hely"><blockquote><p>[Az első kiválasztott Google-vélemény szövege: kérjük, küldjék el]</p></blockquote><figcaption>B. K., Google-vélemény</figcaption></figure>
+          <figure class="velemeny-hely"><blockquote><p>[A második kiválasztott Google-vélemény szövege: kérjük, küldjék el]</p></blockquote><figcaption>B. B., Google-vélemény</figcaption></figure>
+          <figure class="velemeny-hely"><blockquote><p>[A harmadik kiválasztott Google-vélemény szövege: kérjük, küldjék el]</p></blockquote><figcaption>V. A., Google-vélemény</figcaption></figure>
         </div>
       </div>
     </section>
@@ -222,12 +224,11 @@
                 <tr><th scope="row">Ügyelet</th><td>éjjel-nappal, hétvégén is</td></tr>
               </tbody>
             </table>
-            <p class="halvany">Emailt a nap bármely szakában írhat.</p>
           </div>
           <div>
             <h3 class="alcim"><svg aria-hidden="true"><use href="#i-hely"/></svg>Iroda és bemutatóterem</h3>
             <p>3529 Miskolc, Csabai kapu 16., földszint</p>
-            <p><a class="gomb gomb-masod" href="https://www.google.com/maps/search/?api=1&amp;query=Miskolc%2C+Csabai+kapu+16."><svg aria-hidden="true"><use href="#i-hely"/></svg>Útvonal a Csabai kapuhoz</a></p>
+            <p><a class="gomb gomb-masod" href="https://www.google.com/maps/search/?api=1&amp;query=PIETAS+Temetkez%C3%A9s%2C+Miskolc&amp;query_place_id=ChIJN7EtBvWfQEcRqzF3Pll2r_I" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-hely"/></svg>Útvonal a Csabai kapuhoz</a></p>
             <p>Az iroda előtti parkolóban ingyenesen parkolhat.</p>
           </div>
         </div>
@@ -240,7 +241,7 @@
         <p class="bevezeto-kicsi">Telefonon a leggyorsabb. Árajánlatot munkaidőben az irodai számon adunk.</p>
         <p class="kapcs-gomb"><a class="gomb gomb-fo" href="tel:+36202353603"><svg aria-hidden="true"><use href="#i-tel"/></svg>Hívás éjjel-nappal: 06 20 235 3603</a></p>
         <dl class="adatok">
-          <div><dt>Ügyelet, 0–24 óra</dt><dd><a class="tel" href="tel:+3646431014">06 46 431 014</a><br><a class="tel" href="tel:+36202353603">06 20 235 3603</a></dd></div>
+          <div><dt>Ügyelet, 0–24 óra</dt><dd><a class="tel" href="tel:+36202353603">06 20 235 3603</a></dd></div>
           <div><dt>Iroda, munkaidőben</dt><dd><a class="tel" href="tel:+3646431014">06 46 431 014</a><br><a class="tel" href="tel:+36203686533">06 20 368 6533</a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:miskolcipietas@gmail.com">miskolcipietas@gmail.com</a></dd></div>
           <div><dt>Cím</dt><dd>3529 Miskolc, Csabai kapu 16.</dd></div>

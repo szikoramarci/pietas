@@ -9,7 +9,9 @@ Nem indexelt, csak a tulajdonossal osztjuk meg. Ha nem kérik, 2–4 hét után 
 ```
 site/                     ← a Cloudflare Pages gyökere (a functions/ miatt ennek kell lennie)
   index.html              ← választó: három változat előnézeti képpel
-  v1/ v2/ v3/             ← Mécses, Ív, Liliom (generált)
+  v1/ v2/ v3/             ← Mécses, Ív, Liliom (generált), mindegyikben 4 szolgáltatás-aloldal (a hirdetések céloldala)
+  keresek/                ← „Kérései és a javítások”: mit kért az ügyfél, mit csináltunk, hol látja (réteg)
+  valtozasok.json         ← a javítási körök; az értesítő ebből látja az élesedést (PIN nélkül elérhető)
   ajanlat/                ← mit hoz az új oldal, ki készítette (anyagok/ajanlat_oldal.py, sablon: gyorsweb _sablonok/_ajanlat)
   adatkezeles/            ← a bemutató oldal adatkezelési tájékoztatója (réteg)
   assets/                 ← alap.css + v1–v3.css, betűk (saját tárhelyről), réteg JS/CSS
@@ -18,7 +20,9 @@ site/                     ← a Cloudflare Pages gyökere (a functions/ miatt en
   functions/api/jelzes.js   ← „Tetszik ez a rész?” és időpontfoglaló jelzések → VISSZAJELZES KV
 anyagok/
   adatok.md               ← tényadatok forrással, nyitott kérdések
-  generator.py            ← a változatok, a választó és az ajánlatoldal egy tartalomból
+  generator.py            ← a változatok, az aloldalak, a választó és a kérések oldala egy tartalomból
+  keresek.py              ← az ügyfél kérései körönként (szó szerint), állapot, mit és hol javítottunk,
+                             és a kör értesítő levele az ügyfélnek (a PR-ban hagyod jóvá)
   logo/                   ← a régi logó vektorosan lekövetve (az eredeti kérendő)
   regi-oldal/, kepernyokepek/, lighthouse.txt
 elemzes.md                ← a régi oldal elemzése, ingyenes tipp, Lighthouse
@@ -47,5 +51,14 @@ python3 sites/_sablonok/_dizajn/kontraszt.py ../pietas/site/assets/v1.css
 ## Élesítéskor (ha az ügyfél kéri)
 
 A választott változat lesz a gyökér; a réteg törlendő: `ajanlat/`, `adatkezeles/`, `valaszto/`,
-`functions/`, `assets/ki-keszitette.*`, `assets/foglalo.*`, `assets/tetszik.*`, a bemutató sáv, a `noindex`, a `robots.txt`
+`keresek/`, `valtozasok.json`, `functions/`, `assets/ki-keszitette.*`, `assets/foglalo.*`, `assets/tetszik.*`, `assets/keresek.*`, a bemutató sáv, a `noindex`, a `robots.txt`
 tiltása. A régi WordPress-címek 301-es átirányítása ekkor kerül be (`_redirects`).
+
+## Javítási körök (ügyfél-kérések)
+
+1. Az új „Ezt másképp” jelzések a `VISSZAJELZES` KV-ban; az értesítő 30 perc csend után összefoglalót küld róluk.
+2. Új kör az `anyagok/keresek.py` elejére (szó szerint a kérések, állapot, mit és hol), és ha az ügyfélnek levél
+   is menjen, az `ertesites` rész. Generálás, ág, PR.
+3. A PR jóváhagyása (merge) után a Pages élesít; az értesítő a `valtozasok.json`-ból látja az új kört, és elküldi
+   a levelet az ügyfélnek (másolat az info@webness.hu-ra), körönként egyszer. A demón a „Kérései és a javítások”
+   sáv egyszer megjelenik.

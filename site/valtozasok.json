@@ -1,0 +1,28 @@
+{
+ "ceg": "temetkezes-miskolc-pietas",
+ "nev": "Pietas Temetkezés",
+ "url": "https://pietas-temetkezes.pages.dev",
+ "keresek_oldal": "https://pietas-temetkezes.pages.dev/keresek/",
+ "korok": [
+  {
+   "id": "2026-11-17-du",
+   "cim": "November 17., délután",
+   "keresek": 7,
+   "kesz": 5,
+   "var": 2,
+   "ertesites": {
+    "cimzett": "miskolcipietas@gmail.com",
+    "targy": "Pietas bemutató oldal: elkészültek a kért módosítások",
+    "szoveg": "Jó napot kívánok!\n\nÁtvezettem a bemutató oldalon a november 17-én délután kért módosításokat. Hogy mit kértek, mit hogyan javítottam, és hol látják, egy helyen összegyűjtöttem:\nhttps://pietas-temetkezes.pages.dev/keresek/\n\nA legfontosabbak:\n– a főcímben már szerepel a cím (Miskolc, Csabai kapu 16.), alatta jönnek a teendők, utána a szolgáltatások, a Mécses-féle felosztással;\n– a négy fő szolgáltatásnak saját aloldala lett, ide lehet majd a hirdetésekből érkezőket vezetni;\n– az ügyeletnél csak a 06 20 235 3603 szerepel, a térkép a cég Google-helyét mutatja, és új lapon nyílik.\n\nKét dologhoz kérném a segítségüket:\n– a három kiválasztott Google-vélemény szövegét, hogy szó szerint tehessük ki;\n– ha van reklám nélküli fotójuk az irodáról, azt szívesen beteszem; ha nincs, a régi oldal fotójáról tüntetem el a reklámot.\n\nHa valamit másképp szeretnének, a szakaszok alatt továbbra is jelezhetik, vagy egyszerűen válaszoljanak erre a levélre.\n\nÜdvözlettel:\nSzikora Marcell\nwebness.hu"
+   }
+  },
+  {
+   "id": "2026-11-17-de",
+   "cim": "November 13. és 17., délelőtt",
+   "keresek": 7,
+   "kesz": 7,
+   "var": 0,
+   "ertesites": null
+  }
+ ]
+}

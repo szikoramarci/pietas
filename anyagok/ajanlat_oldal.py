@@ -59,9 +59,10 @@ CFG = {
         ],
     },
     "tovabbi": {"elemek": ["Az Ív változatban megmarad a logó sírkő-íve és a bordó szín",
-                           "Előre kerül: díjmentes elszállítás Miskolcon belül, díjmentes koszorú-kiszállítás, urnakiadás",
+                           "Rögtön a nyitókép alatt: mi a teendő otthoni és kórházi halálesetnél",
+                           "Saját aloldal a fő szolgáltatásoknak: ide vezethetők a hirdetésekből érkezők",
                            "„Amit a családok először kérdeznek”: rövid válaszok", "A temetés költségének tételei egy helyen",
-                           "Évszámokkal: 1991 óta, a hejőcsabai temető 2008 óta", "Mobilon nagyítható betűk",
+                           "Évszámokkal: 1991 óta, a Hejőcsabai Római Katolikus temető 2008 óta", "Mobilon nagyítható betűk",
                            "Hely a családok véleményének és saját fotóknak"]},
     "valtozatok": {"kartyak": [
         ("Mécses", "Mélyzöld, nyugodt színek, a nyitóképen mécsesfénnyel a 24 órás ügyelet száma. Nagy, jól olvasható betűk.", "v1"),

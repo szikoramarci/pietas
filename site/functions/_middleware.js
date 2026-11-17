@@ -124,6 +124,10 @@ function pinOldal(vissza, hiba, status = 401) {
 export async function onRequest({ request, env, next }) {
   const url0 = new URL(request.url);
 
+  // Az értesítő (gyorsweb: eszkozok/ertesito/) ebből látja, hogy egy javítási kör élesedett: PIN nélkül is
+  // elérhető (csak ez a fájl; a kérések listáját és az ügyfélnek szóló levél szövegét tartalmazza).
+  if (url0.pathname === "/valtozasok.json" && request.method === "GET") return atenged(next);
+
   // Nyitott mód: PIN nélkül, de botok nélkül és indexelés nélkül.
   if (env.DEMO_NYITVA === "1") {
     if (url0.pathname === "/robots.txt") return atenged(next);

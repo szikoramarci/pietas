@@ -41,6 +41,20 @@ mindhárom változatba átvezetve (2026-11-17).
   A többi szám (mobil 06 70 947 5490, koszorú 06 20 523 4394, 06 70 947 5790) nem kerül ki.
 - **Visszahívást kért** (záró kérdés: „talán”), +36 46 431 014, időpont: mindegy (2026-11-17 10:10).
 
+## Az ügyfél javításai, második kör (2026. 11. 17., 11:13–12:22; átvezetve: `anyagok/keresek.py`)
+
+- **Ügyelet:** csak a 06 20 235 3603 (az irodai vezetékes ott ne szerepeljen). Az iroda: 06 46 431 014, 06 20 368 6533.
+- **Díjmentes elszállítás Miskolcon belül:** a mondat kimarad (sehol nem szerepel).
+- **Iratok:** otthoni és kórházi halálesetnél ugyanazok.
+- **Google-hely:** a térkép a cég saját Google-helyét mutassa. `place_id` (a szabályaink szerint csak ez tárolható):
+  iroda `ChIJN7EtBvWfQEcRqzF3Pll2r_I`, temető `ChIJP3luiCGhQEcRoVPDyzrdZO4`. A cégnek 12 Google-véleménye van.
+- **Vélemények:** a 12-ből hármat kértek: Kornélia Bésán, Beatrix Bíró („Beatrixw”), Andrea Varga; monogrammal is lehet.
+  A szöveget tőlük kérjük (a Google Térképről nem másolunk).
+- **Fotó:** a régi oldal „Cégünkről” külső irodafotója, az emeleti korlát reklámja (Pannónia biztosító) nélkül.
+- **Hirdetés:** Google Ads-et terveznek, ezért a fő szolgáltatásoknak saját aloldal kell (céloldal).
+- **Linkek:** a kifelé mutatók új lapon nyíljanak. Az „Emailt a nap bármely szakában írhat” mondat kimarad.
+- **Nyitókép:** a cím a főcímben; alatta a teendők, utána a szolgáltatások; a Mécses felosztása tetszik jobban.
+
 ## Elérhetőség
 
 | Mi | Szám | Forrás |
@@ -98,5 +112,5 @@ mindhárom változatba átvezetve (2026-11-17).
 - Szórásos temetés: vállalják-e, hol (szórókert), mit tartalmaz?
 - Vélemények: van-e közzétett, hozzájárulással használható családi visszajelzés?
 - Facebook-oldal van-e (a jogi nyilatkozat említi)?
-- Az ügyeleti és az irodai vezetékes szám ugyanaz (06 46 431 014): így kérték, a hívásban megerősíteni.
+- A szolgáltatás-aloldalak részletei (mit tartalmaz, időtartamok, külföldi szállítás, a kegyeleti szerződés fizetése): a [helyőrzők].
 - **Közös pont?** A régi oldal jogi nyilatkozata megnevezi a honlap adatkezelőjét; a neve egyezik Marcell egyik véleményírójáéval (lásd `KIHAGY` a `site/assets/ki-keszitette.js`-ben). A véleményét ezért kihagytuk, és ha valóban ismeretség, a `KOZOS_PONT`-ba egy mondat kerülhet, részletek nélkül.

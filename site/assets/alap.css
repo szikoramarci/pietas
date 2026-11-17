@@ -151,6 +151,31 @@ a.tel { font-family: var(--betu-szam); white-space: nowrap; font-weight: 600; }
 .nyito h1 { max-width: 18ch; }
 .felcim { font-size: var(--m-kicsi); color: var(--halvany); margin-bottom: var(--t-3); }
 .nyito .bevezeto { max-width: 36rem; }
+
+/* Ügyeleti tábla a nyitóképen (Mécses felosztás; az Ív és az aloldalak is ezt használják) */
+.ugyelet-tabla { border: 1px solid var(--keret); border-radius: var(--lekerekites); padding: var(--t-6); background: var(--felulet); }
+.tabla-jel { display: block; width: 24px; height: 50px; color: var(--link); margin-bottom: var(--t-4); }
+.tabla-cimke { margin: 0 0 var(--t-1); color: var(--halvany); }
+.tabla-szam { margin: 0 0 var(--t-5); }
+.tabla-szam a.tel { font-family: var(--betu-cim); font-weight: 400; letter-spacing: 0.02em; font-size: clamp(1.953rem, 1.5rem + 1.6vw, 2.441rem); line-height: 1.1; color: var(--link); text-decoration: none; }
+@media (max-width: 359px) { .tabla-szam a.tel { font-size: 1.563rem; } }  /* 320 px-en se lógjon ki az ügyeleti szám */
+.ugyelet-tabla dl { margin: 0; display: grid; gap: var(--t-3); border-top: 1px solid var(--keret); padding-top: var(--t-4); }
+.ugyelet-tabla dt { font-size: var(--m-kicsi); color: var(--halvany); }
+.ugyelet-tabla dd { margin: 0; }
+.ugyelet-tabla dd a.tel { color: var(--szoveg); }
+
+/* Aloldalak (szolgáltatások) */
+.morzsa { font-size: var(--m-kicsi); color: var(--halvany); margin-bottom: var(--t-4); }
+.morzsa a { color: inherit; }
+.aloldal-nyito h1 { max-width: 22ch; }
+.pipa-lista { list-style: none; padding: 0; margin: 0 0 var(--t-5); display: grid; gap: var(--t-3); max-width: 46rem; }
+.pipa-lista li { position: relative; padding-left: var(--t-6); margin: 0; }
+.pipa-lista li::before { content: ""; position: absolute; left: 0; top: 0.35em; width: 14px; height: 8px; border-left: 2.5px solid var(--link); border-bottom: 2.5px solid var(--link); transform: rotate(-45deg); }
+.reszletek { margin-top: var(--t-3) !important; }
+.reszletek a { font-weight: 600; }
+.tovabbi-szolg { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--t-2) var(--t-5); }
+.tovabbi-szolg a { font-weight: 600; }
+.rejtett { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .nyito-info { color: var(--halvany); font-size: var(--m-kicsi); margin: 0; }
 .tenyek { list-style: none; padding: 0; margin: var(--t-5) 0 0; display: flex; flex-wrap: wrap; gap: var(--t-2) var(--t-5); }
 .tenyek li { margin: 0; padding-left: var(--t-5); position: relative; }
@@ -175,6 +200,11 @@ a.tel { font-family: var(--betu-szam); white-space: nowrap; font-weight: 600; }
 .kiemelt-sor { border-left: 4px solid var(--diszito); background: var(--felulet); padding: var(--t-3) var(--t-4); border-radius: 0 var(--lekerekites-kicsi) var(--lekerekites-kicsi) 0; font-weight: 600; }
 .szakasz-alt .kiemelt-sor { background: var(--hatter); }
 .iratok li { margin-bottom: var(--t-2); }
+/* Az iratok külön dobozban: otthoni és kórházi halálesetnél is ugyanazok (az ügyfél kérése, 2026-11-17) */
+.iratok-doboz { margin: var(--t-6) 0 var(--t-4); padding: var(--t-5); border: 1px solid var(--keret); border-top: 4px solid var(--diszito); border-radius: var(--lekerekites); background: var(--felulet); }
+.iratok-doboz .alcim { margin-top: 0; }
+.iratok-doboz .iratok { margin-bottom: 0; }
+@media (min-width: 900px) { .iratok-doboz .iratok { columns: 2; column-gap: var(--t-8); } .iratok-doboz .iratok li { break-inside: avoid; } }
 
 /* Gyakori kérdések */
 .kerdesek { display: grid; gap: var(--t-5) var(--t-7); margin: 0; }

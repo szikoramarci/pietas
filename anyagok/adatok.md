@@ -15,19 +15,45 @@ Közösségi oldalt és Google Térképet nem kapartunk. Ami nem derült ki, az 
 - **Szakmai tagság:** a Magyar Temetkezési Szolgáltatók Országos Szakegyesületének alapító tagja (Cégünkről)
 - **Temetőüzemeltetés:** 2008 óta a Miskolc-Hejőcsabai Római Katolikus Temető (Cégünkről; a „Temető üzemeltetés” oldal még „közel 2 éve” szöveggel, elavult)
 
+## Az ügyfél javításai (a demó „Ezt másképp” jelzései, 2026. 11. 13. és 11. 17.)
+
+A Pietas a demó Ív (v2) változatán jelezte (`VISSZAJELZES` KV). Ezek felülírják a régi oldal adatait;
+mindhárom változatba átvezetve (2026-11-17).
+
+- **Gyászhirdetés:** megszűnt, nem kerül az oldalra (szolgáltatások, nyitókép, árak).
+- **Urnakiadás:** nem kerül a szolgáltatások közé, és az urna hazavitelét sem részletezzük.
+- **Koszorú:** más városba nem szállítanak.
+- **Kegyeleti szerződés:** van rá lehetőség, egyéni megbeszélés szerint.
+- **Halottszállítás külföldről:** a szomszédos országokból.
+- **Temető:** pontos neve **Hejőcsabai Római Katolikus temető** (Hejőcsabán másik temető is van); címe 3508 Miskolc,
+  Csabavezér út 1.; autóval a Segesvári utca felől közelíthető meg (térkép kérve); nyitvatartás április 1. és
+  november 1. között 7–19, november 1. és április 1. között 8–17.
+- **Sírkőmunka:** a „családnak elég telefonon szólnia” mondat törlendő.
+- **Teendők:** a kórház csak a halottvizsgálati bizonyítványt állítja ki; a statisztikai lap kitöltése kimarad;
+  meghatalmazással bárki intézheti, nem csak ha a temettető beteg.
+- **Költségek** (a gyakori kérdésekbe): 1. a temetkezés (szállítási díjak, szakszemélyzet, ügyintézés, hamvasztás
+  díja, kellékek); 2. a temető díjai (sírhellyel kapcsolatos díjak, sírnyitás, ravatalozóhasználat); 3. a kórháznak
+  fizetendő hűtési díj, halottkiadás; 4. a búcsúztató egyházi vagy polgári díja.
+- **„Mennyibe kerül? Ebből áll össze a számla” szakasz:** teljesen kimarad.
+- **Iroda:** nyitvatartás hétköznap **8:30–15:30**; ingyenes parkoló az iroda előtt.
+- **Kapcsolat-szakasz címe:** „24 órás halottszállítási ügyelet” (a „Hívjon, éjjel is felvesszük” helyett).
+- **Telefonszámok, csak ezek:** ügyelet 06 46 431 014 és 06 20 235 3603; iroda 06 46 431 014 és 06 20 368 6533.
+  A többi szám (mobil 06 70 947 5490, koszorú 06 20 523 4394, 06 70 947 5790) nem kerül ki.
+- **Visszahívást kért** (záró kérdés: „talán”), +36 46 431 014, időpont: mindegy (2026-11-17 10:10).
+
 ## Elérhetőség
 
 | Mi | Szám | Forrás |
 |---|---|---|
 | 24 órás ügyelet („éjszakai ügyelet”) | +36 20 235 3603 | Mi a teendőnk?, Kezdőlap |
-| Iroda, vezetékes (árajánlat) | +36 46 431 014 | Kapcsolat, Kezdőlap, minden szolgáltatásoldal |
+| Iroda, vezetékes (árajánlat) | +36 46 431 014 (az ügyfél szerint az ügyeleté is) | Kapcsolat, Kezdőlap, minden szolgáltatásoldal |
 | Mobil | +36 70 947 5490 (a régi oldalon „06 70 9 475 490”) | Kapcsolat, lábléc |
 | Koszorúrendelés, más városba küldés | +36 20 523 4394 | Koszorú rendelés |
 | További számok, munkaidőben | +36 20 368 6533, +36 70 947 5790 | Kezdőlap |
 | Email (egész nap) | miskolcipietas@gmail.com | Kapcsolat, Kezdőlap |
 | Fax | nincs | lábléc |
 
-- **Nyitvatartás (iroda):** hétfőtől péntekig 8:30–16:00 (Kapcsolat)
+- **Nyitvatartás (iroda):** hétfőtől péntekig 8:30–16:00 a régi oldalon; az ügyfél szerint **8:30–15:30**
 - **Ügyelet:** 24 órás („bármikor készek vagyunk fogadni a hívását”, Mi a teendőnk?)
 
 ## Szolgáltatások (a régi oldal szerint)
@@ -70,10 +96,7 @@ Közösségi oldalt és Google Térképet nem kapartunk. Ami nem derült ki, az 
 
 - Melyik szám legyen a fő „Hívás” gomb: a 24 órás ügyelet vagy az iroda? (A demóban az ügyelet, mert az mindig felveszik.)
 - Szórásos temetés: vállalják-e, hol (szórókert), mit tartalmaz?
-- A Hejőcsabai temető címe, nyitvatartása, ügyintézés módja.
-- Tájékoztató árak („-tól”) hamvasztásos és koporsós temetésre, ha vállalják.
-- A gyászhirdetés-árak aktuálisak-e?
 - Vélemények: van-e közzétett, hozzájárulással használható családi visszajelzés?
 - Facebook-oldal van-e (a jogi nyilatkozat említi)?
-- Megmarad-e a meghatalmazásos megrendelés szövege?
+- Az ügyeleti és az irodai vezetékes szám ugyanaz (06 46 431 014): így kérték, a hívásban megerősíteni.
 - **Közös pont?** A régi oldal jogi nyilatkozata megnevezi a honlap adatkezelőjét; a neve egyezik Marcell egyik véleményírójáéval (lásd `KIHAGY` a `site/assets/ki-keszitette.js`-ben). A véleményét ezért kihagytuk, és ha valóban ismeretség, a `KOZOS_PONT`-ba egy mondat kerülhet, részletek nélkül.

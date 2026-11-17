@@ -182,6 +182,9 @@ a.tel { font-family: var(--betu-szam); white-space: nowrap; font-weight: 600; }
 .kerdesek > div { border-top: 1px solid var(--keret); padding-top: var(--t-4); }
 .kerdesek dt { font-family: var(--betu-cim); font-size: var(--m-h3); line-height: var(--sorkoz-cim); margin-bottom: var(--t-2); }
 .kerdesek dd { margin: 0; color: var(--halvany); }
+.kerdesek ol { margin: var(--t-2) 0 var(--t-3); }
+.kerdesek ol li { margin-bottom: var(--t-1); }
+@media (min-width: 900px) { .kerdesek > .ket-sor { grid-row: span 2; } }
 
 /* Szolgáltatások */
 .szolg-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--t-5) var(--t-7); }
@@ -192,6 +195,9 @@ a.tel { font-family: var(--betu-szam); white-space: nowrap; font-weight: 600; }
 .szolg-lista p { margin: 0; color: var(--halvany); }
 .temeto { margin-top: var(--t-7); padding: var(--t-5); border-radius: var(--lekerekites); background: var(--hatter); border: 1px solid var(--keret); }
 .temeto p:last-child { margin-bottom: 0; }
+.temeto-racs { display: grid; gap: var(--t-4) var(--t-8); margin-top: var(--t-5); padding-top: var(--t-5); border-top: 1px solid var(--keret); }
+@media (min-width: 900px) { .temeto-racs { grid-template-columns: 1fr 1fr; align-items: start; } }
+.temeto-racs table { margin-bottom: 0; }
 
 /* Helyőrzők */
 .helyorzo { border: 2px dashed var(--keret); border-radius: var(--lekerekites-kicsi); padding: var(--t-3) var(--t-4); color: var(--halvany); font-size: var(--m-kicsi); margin-top: var(--t-4); }
@@ -202,8 +208,6 @@ caption { text-align: left; font-size: var(--m-kicsi); padding-bottom: var(--t-2
 th, td { text-align: left; padding: var(--t-2) 0; border-bottom: 1px solid var(--keret); }
 td { text-align: right; font-family: var(--betu-szam); font-variant-numeric: tabular-nums; white-space: nowrap; }
 th { font-weight: 400; }
-.arak .ajanlott th, .arak .ajanlott td { font-weight: 700; }
-.arak .ajanlott th::after { content: " (javasolt)"; font-weight: 400; color: var(--halvany); }
 
 /* Rólunk */
 .rolunk-racs { display: grid; gap: var(--t-7); align-items: start; }

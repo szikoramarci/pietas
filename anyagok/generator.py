@@ -27,19 +27,29 @@ def tel(szam):
     return "tel:+36" + d[2:] if d.startswith("06") else "tel:+" + d
 
 
+# A telefonszámok az ügyfél kérése szerint (demó-visszajelzés, 2026-11-17): ügyeletnek és irodának
+# két-két szám, a többi (mobil, koszorúrendelés, további számok) nem kerül ki. A vezetékes szám
+# mindkettőnél ugyanaz, így kérték (adatok.md).
 UGYELET = "06 20 235 3603"
 IRODA = "06 46 431 014"
-MOBIL = "06 70 947 5490"
-KOSZORU = "06 20 523 4394"
-TOVABBI = ["06 20 368 6533", "06 70 947 5790"]
+IRODA_MOBIL = "06 20 368 6533"
+UGYELET_SZAMOK = [IRODA, UGYELET]
+IRODA_SZAMOK = [IRODA, IRODA_MOBIL]
 EMAIL = "miskolcipietas@gmail.com"
 CIM = "3529 Miskolc, Csabai kapu 16."
 TERKEP = "https://www.google.com/maps/search/?api=1&amp;query=Miskolc%2C+Csabai+kapu+16."
-NYITVA = 'hétfőtől péntekig <span class="nowrap">8:30–16:00</span>'
+NYITVA = 'hétfőtől péntekig <span class="nowrap">8:30–15:30</span>'
+TEMETO = "Hejőcsabai Római Katolikus temető"   # pontos név: Hejőcsabán másik temető is van
+TEMETO_CIM = '3508 Miskolc, <span class="nowrap">Csabavezér út 1.</span>'
+TEMETO_TERKEP = "https://www.google.com/maps/search/?api=1&amp;query=3508+Miskolc%2C+Csabavez%C3%A9r+%C3%BAt+1."
 
 
 def a_tel(szam, cls="tel"):
     return f'<a class="{cls}" href="{tel(szam)}">{szam.replace(" ", NBSP)}</a>'
+
+
+def a_telek(szamok, elvalaszto=", "):
+    return elvalaszto.join(a_tel(s) for s in szamok)
 
 
 def symbol(nev, azon):
@@ -75,13 +85,13 @@ ICON = ('<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3
 
 VALTOZATOK = {
     "v1": dict(nev="Mécses", theme="#1C3530", preload="marcellus.woff2",
-               rend=["nyito", "ismeros", "teendok", "szolgaltatasok", "koltsegek", "rolunk", "velemenyek", "hol", "kapcsolat"],
+               rend=["nyito", "ismeros", "teendok", "szolgaltatasok", "rolunk", "velemenyek", "hol", "kapcsolat"],
                leiras="Mélyzöld, nyugodt színek, a nyitóképen mécsesfénnyel a 24 órás ügyelet száma. Nagy, jól olvasható betűk, a telefonszámok mindig kiemelve."),
     "v2": dict(nev="Ív", theme="#592131", preload="sourceserif4.woff2",
-               rend=["nyito", "szolgaltatasok", "teendok", "ismeros", "rolunk", "koltsegek", "velemenyek", "hol", "kapcsolat"],
+               rend=["nyito", "szolgaltatasok", "teendok", "ismeros", "rolunk", "velemenyek", "hol", "kapcsolat"],
                leiras="A mostani arculat felújítva: a logó sírkő-íve, a bordó és a borostyán szín, papírszerű háttér. A szolgáltatások kerülnek előre."),
     "v3": dict(nev="Liliom", theme="#F7F7F4", preload="cormorantgaramond.woff2",
-               rend=["nyito", "teendok", "ismeros", "szolgaltatasok", "koltsegek", "rolunk", "velemenyek", "hol", "kapcsolat"],
+               rend=["nyito", "teendok", "ismeros", "szolgaltatasok", "rolunk", "velemenyek", "hol", "kapcsolat"],
                leiras="Világos, levegős, nagy betűs változat. Már a nyitóképen ott van lépésről lépésre, mi a teendő haláleset után."),
 }
 
@@ -97,10 +107,10 @@ def gombok():
 TENYEK = f"""<ul class="tenyek">
             <li>1991 óta Miskolcon</li>
             <li>24 órás ügyelet, hétvégén is</li>
-            <li>a hejőcsabai temető üzemeltetője</li>
+            <li>a {TEMETO} üzemeltetője</li>
           </ul>"""
 
-IRODA_SOR = f'<p class="nyito-info">Iroda: {CIM}, {NYITVA}, {a_tel(IRODA)}</p>'
+IRODA_SOR = f'<p class="nyito-info">Iroda: {CIM}, {NYITVA}. Telefon: {a_telek(IRODA_SZAMOK, " vagy ")}</p>'
 
 
 def fej(id_, cim, bev=None):
@@ -123,7 +133,7 @@ def nyito(v):
         <div class="nyito-szoveg">
           <p class="felcim">Pietas Temetkezés, Miskolc</p>
           <h1 id="nyito-cim">Temetés teljes ügyintézéssel, Miskolcon 1991 óta</h1>
-          <p class="bevezeto">Átvesszük a temetés minden teendőjét: az elhunyt elszállítását, a hivatalos ügyeket, a gyászhirdetést és a búcsúztatás szervezését.</p>
+          <p class="bevezeto">Átvesszük a temetés minden teendőjét: az elhunyt elszállítását, a hivatalos ügyeket és a búcsúztatás szervezését.</p>
           {TENYEK}
           {gombok()}
         </div>
@@ -132,7 +142,7 @@ def nyito(v):
           <p class="tabla-cimke">24 órás ügyelet</p>
           <p class="tabla-szam">{a_tel(UGYELET)}</p>
           <dl>
-            <div><dt>Iroda, {NYITVA}</dt><dd>{a_tel(IRODA)}</dd></div>
+            <div><dt>Iroda, {NYITVA}</dt><dd>{a_telek(IRODA_SZAMOK, "<br>")}</dd></div>
             <div><dt>Címünk</dt><dd>{CIM}</dd></div>
           </dl>
         </aside>
@@ -144,7 +154,7 @@ def nyito(v):
         <div class="nyito-szoveg">
           <p class="felcim">Pietas Temetkezés, Miskolc</p>
           <h1 id="nyito-cim">Teljeskörű temetkezési szolgálat Miskolcon, 1991 óta</h1>
-          <p class="bevezeto">Hamvasztásos és koporsós temetés, gyászhirdetés, koszorú és halottszállítás egy helyen, a Csabai kapuban. Ügyeletünk éjjel is hívható.</p>
+          <p class="bevezeto">Hamvasztásos és koporsós temetés, koszorú és halottszállítás egy helyen, a Csabai kapuban. Ügyeletünk éjjel is hívható.</p>
           {gombok()}
           {IRODA_SOR}
         </div>
@@ -174,9 +184,16 @@ def ismeros(v):
         {fej('kerdesek', 'Amit a családok először kérdeznek')}
         <dl class="kerdesek">
           <div><dt>Otthon hunyt el. Kit hívjak először?</dt><dd>A háziorvost vagy az orvosi ügyeletet. Ha az orvos végzett, hívja ügyeletünket: {a_tel(UGYELET)}.</dd></div>
-          <div><dt>Mennyibe kerül a temetés?</dt><dd>A választott kellékeken és a temető díjain múlik. Árajánlatot telefonon kérhet: {a_tel(IRODA)}. <a href="#koltsegek">Miből áll a költség?</a></dd></div>
+          <!-- A költség négy része az ügyfél felsorolása szerint (demó-visszajelzés, 2026-11-17). -->
+          <div class="ket-sor"><dt>Mennyibe kerül a temetés?</dt><dd>A költség négy részből áll össze:
+            <ol class="koltseg-reszek">
+              <li>a temetkezés: szállítás, szakszemélyzet, ügyintézés, hamvasztás és a kellékek</li>
+              <li>a temető díjai: sírhely, sírnyitás, a ravatalozó használata</li>
+              <li>a kórháznak fizetendő hűtési díj és halottkiadás</li>
+              <li>az egyházi vagy polgári búcsúztató díja</li>
+            </ol>
+            Árajánlatot telefonon kérhet: {a_tel(IRODA)}.</dd></div>
           <div><dt>Választhatunk temetőt?</dt><dd>Igen. Miskolcon bármelyik temetkezési szolgáltató bármelyik temetőben temethet.</dd></div>
-          <div><dt>Hazavihetjük az urnát?</dt><dd>Igen, ez az urnakiadás. Jóval kevesebbe kerül, mert nincs temetés, temetői és búcsúztatási díj.</dd></div>
         </dl>
       </div>
     </section>"""
@@ -197,7 +214,7 @@ def teendok(v):
         <div class="ketoszlop">
           <div>
             <h3 class="alcim">Ha kórházban történt</h3>
-            <p>A halottvizsgálati bizonyítványt és a haláleset bejelentéséről szóló jegyzőkönyvet a kórház adja át. Ez néhány napig is tarthat.</p>
+            <p>A kórház a halottvizsgálati bizonyítványt állítja ki. Ez néhány napig is tarthat.</p>
             <p>Addig is jöjjön be az irodába: az időpont kivételével mindent megbeszélhetünk.</p>
           </div>
           <div>
@@ -208,22 +225,22 @@ def teendok(v):
               <li>születési vagy házassági anyakönyvi kivonat, ha megvan; ha nem, segítünk beszerezni</li>
               <li>külföldi elhunytnál az útlevél</li>
             </ul>
-            <p class="halvany">A statisztikai lapot otthoni halálesetnél az irodában töltjük ki.</p>
           </div>
         </div>
-        <!-- EGYEZTETENDŐ: a régi kezdőlap járványügyi szövegéből; marad-e. -->
-        <p class="halvany">Ha Ön beteg, meghatalmazottja is megrendelheti a temetést.</p>
+        <p class="halvany">Meghatalmazással bárki intézheti a temetést a temettető helyett.</p>
       </div>
     </section>"""
 
 
+# Az ügyfél kérése szerint (2026-11-17): urnakiadás és gyászhirdetés nincs (a gyászhirdetés megszűnt),
+# koszorút más városba nem szállítanak, kegyeleti szerződés egyéni megbeszélés szerint, külföldről a
+# szomszédos országokból szállítanak.
 SZOLG = [
-    ("Hamvasztásos temetés", "Teljes ügyintézéssel. Ha az urnát otthon helyeznék el, urnakiadást intézünk."),
+    ("Hamvasztásos temetés", "Teljes ügyintézéssel. Urnát a bemutatótermünkben választhat."),
     ("Koporsós temetés", "Teljes ügyintézéssel. Koporsót, sírjelzőt és sírtáblát a bemutatótermünkben választhat."),
-    ("Gyászhirdetés az Észak-Magyarországban", "Irodánkból adjuk fel, azonnali visszaigazolással: gyászhirdetés, köszönetnyilvánítás, megemlékezés."),
-    ("Koszorú friss virágból", f"Csak megrendelésre készül, katalógusból választhat, és díjmentesen kiszállítjuk a temetésre. Más városba is küldhet: {a_tel(KOSZORU)}."),
-    ("Kegyeleti szerződés", "Előre rögzítheti a temetés módját, a koporsót vagy urnát, a hirdetés szövegét és a búcsúztatást. Fizethet egy összegben vagy két részletben."),
-    ("Halottszállítás", "Belföldön, és Európa szinte minden országából vagy országába, a szükséges hatósági és konzuli iratokkal."),
+    ("Koszorú friss virágból", "Csak megrendelésre készül, katalógusból választhat, és díjmentesen kiszállítjuk a temetésre."),
+    ("Kegyeleti szerződés", "Előre is megállapodhat velünk a temetésről. A részleteket egyéni megbeszélés szerint rögzítjük."),
+    ("Halottszállítás", "Belföldön, és a szomszédos országokból is, a szükséges hatósági és konzuli iratokkal."),
 ]
 
 
@@ -239,55 +256,21 @@ def szolgaltatasok(v):
 {li}
         </ul>
         <div class="temeto">
-          <h3>A Hejőcsabai Római Katolikus Temető üzemeltetője</h3>
-          <p>2008 óta mi üzemeltetjük. Sírhely, sírásás és ravatalozó ügyében hozzánk forduljon. Sírkőmunkát a sírkövesnek kell bejelentenie az irodánkban, a családnak elég telefonon szólnia.</p>
-          <!-- EGYEZTETENDŐ: a temető címe és nyitvatartása. -->
-          <p class="helyorzo">[A temető címe és nyitvatartása: egyeztetendő]</p>
-        </div>
-      </div>
-    </section>"""
-
-
-HIRDETES = [("2/25", 10160), ("2/50", 15240), ("2/75", 22860), ("2/100", 30480), ("2/125", 37500), ("2/150", 45720)]
-
-
-def ft(n):
-    return f"{n:,}".replace(",", NBSP) + f"{NBSP}Ft"
-
-
-def koltsegek(v):
-    sorok = "\n".join(
-        f'              <tr{" class=\"ajanlott\"" if m == "2/50" else ""}><th scope="row">{m}</th><td>{ft(a)}</td></tr>' for m, a in HIRDETES)
-    return f"""<section class="szakasz" id="koltsegek" aria-labelledby="koltsegek-cim">
-      <div class="keret">
-        {fej('koltsegek', 'Mennyibe kerül? Ebből áll össze a számla', f'A végösszeg a választott kellékeken múlik, ezért pontos árat csak tételesen tudunk mondani. Árajánlatot telefonon kérhet: {a_tel(IRODA)}.')}
-        <div class="ketoszlop">
-          <div>
-            <h3 class="alcim">A temetkezési számla</h3>
-            <ul>
-              <li>a szolgáltatás díja</li>
-              <li>a választott termékek: koporsó vagy urna, sírjelző vagy fejfa, sírtábla, urnánál urnaterítő és keszon</li>
-            </ul>
-            <h3 class="alcim">Amivel még számolni kell</h3>
-            <ul>
-              <li>a temető díjai (ravatalozó, sírásás); koporsós temetésnél a sírásás jóval drágább</li>
-              <li>kórházi díjak (öltöztetés, hűtés)</li>
-              <li>virág és búcsúztatás</li>
-            </ul>
-            <p>Urnakiadásnál a költség jóval kisebb, mert nincs temetés.</p>
-            <!-- EGYEZTETENDŐ: ha vállalják, tájékoztató „-tól” árak. Marcell a hívásban kérdezzen rá. -->
-            <p class="helyorzo">[Tájékoztató ár: hamvasztásos temetés …-tól, koporsós temetés …-tól – egyeztetendő]</p>
-          </div>
-          <div>
-            <h3 class="alcim">Gyászhirdetés az Észak-Magyarországban</h3>
-            <!-- EGYEZTETENDŐ: az árak a régi weboldalról, dátum nélkül; aktuálisak-e. -->
-            <table class="arak">
-              <caption class="halvany">Méret és ár</caption>
+          <h3>A {TEMETO} üzemeltetője</h3>
+          <p>2008 óta mi üzemeltetjük. Sírhely, sírásás és ravatalozó ügyében hozzánk forduljon. Sírkőmunkát a sírkövesnek kell bejelentenie az irodánkban.</p>
+          <div class="temeto-racs">
+            <div>
+              <p><strong>A temető címe:</strong> {TEMETO_CIM}</p>
+              <p>Autóval a Segesvári utca felől lehet megközelíteni.</p>
+              <p><a class="gomb gomb-masod" href="{TEMETO_TERKEP}"><svg aria-hidden="true"><use href="#i-hely"/></svg>Térkép és útvonal a temetőhöz</a></p>
+            </div>
+            <table class="nyitva">
+              <caption>A temető nyitvatartása</caption>
               <tbody>
-{sorok}
+                <tr><th scope="row">április 1. – november 1.</th><td>7:00–19:00</td></tr>
+                <tr><th scope="row">november 1. – április 1.</th><td>8:00–17:00</td></tr>
               </tbody>
             </table>
-            <p class="halvany">Gyászhirdetéshez a 2/50-es méretet javasoljuk: belefér egy jelkép és egy rövid idézet. Köszönetnyilvánításhoz a 2/25 elég.</p>
           </div>
         </div>
       </div>
@@ -306,7 +289,7 @@ def rolunk(v):
           <p>A gyász napjaiban a fájdalmat nem vehetjük el, de a terheket igen: ezért intézünk el minden ügyet, amit csak lehet.</p>
           <ul class="tenyek-lista">
             <li>Bemutatótermünkben koporsók, urnák, sírjelzők és más kellékek közül választhat.</li>
-            <li>2008 óta üzemeltetjük a Miskolc-Hejőcsabai Római Katolikus Temetőt.</li>
+            <li>2008 óta üzemeltetjük a {TEMETO}t.</li>
             <li>Alapító tagjai vagyunk a Magyar Temetkezési Szolgáltatók Országos Szakegyesületének.</li>
           </ul>
         </div>
@@ -334,13 +317,13 @@ def velemenyek(v):
 def hol(v):
     return f"""<section class="szakasz szakasz-alt" id="hol" aria-labelledby="hol-cim">
       <div class="keret">
-        {fej('hol', 'Csabai kapu 16., hétköznap 8:30–16:00')}
+        {fej('hol', 'Csabai kapu 16., hétköznap 8:30–15:30')}
         <div class="ketoszlop">
           <div>
             <h3 class="alcim"><svg aria-hidden="true"><use href="#i-ora"/></svg>Nyitvatartás</h3>
             <table class="nyitva">
               <tbody>
-                <tr><th scope="row">Iroda, hétfő–péntek</th><td>8:30–16:00</td></tr>
+                <tr><th scope="row">Iroda, hétfő–péntek</th><td>8:30–15:30</td></tr>
                 <tr><th scope="row">Ügyelet</th><td>éjjel-nappal, hétvégén is</td></tr>
               </tbody>
             </table>
@@ -350,7 +333,7 @@ def hol(v):
             <h3 class="alcim"><svg aria-hidden="true"><use href="#i-hely"/></svg>Iroda és bemutatóterem</h3>
             <p>{CIM}, földszint</p>
             <p><a class="gomb gomb-masod" href="{TERKEP}"><svg aria-hidden="true"><use href="#i-hely"/></svg>Útvonal a Csabai kapuhoz</a></p>
-            <p class="helyorzo">[Parkolás a közelben: egyeztetendő]</p>
+            <p>Az iroda előtti parkolóban ingyenesen parkolhat.</p>
           </div>
         </div>
       </div>
@@ -358,17 +341,13 @@ def hol(v):
 
 
 def kapcsolat(v):
-    tovabbi = ", ".join(a_tel(s) for s in TOVABBI)
     return f"""<section class="szakasz kapcsolat" id="kapcsolat" aria-labelledby="kapcsolat-cim">
       <div class="keret">
-        {fej('kapcsolat', 'Hívjon, éjjel is felvesszük', 'Telefonon a leggyorsabb. Árajánlatot munkaidőben az irodai számon adunk.')}
+        {fej('kapcsolat', '24 órás halottszállítási ügyelet', 'Telefonon a leggyorsabb. Árajánlatot munkaidőben az irodai számon adunk.')}
         <p class="kapcs-gomb"><a class="gomb gomb-fo" href="{tel(UGYELET)}"><svg aria-hidden="true"><use href="#i-tel"/></svg>Hívás éjjel-nappal: {UGYELET.replace(" ", NBSP)}</a></p>
         <dl class="adatok">
-          <div><dt>Ügyelet, 0–24 óra</dt><dd>{a_tel(UGYELET)}</dd></div>
-          <div><dt>Iroda, munkaidőben</dt><dd>{a_tel(IRODA)}</dd></div>
-          <div><dt>Mobil</dt><dd>{a_tel(MOBIL)}</dd></div>
-          <div><dt>Koszorúrendelés</dt><dd>{a_tel(KOSZORU)}</dd></div>
-          <div><dt>További számok, munkaidőben</dt><dd>{tovabbi}</dd></div>
+          <div><dt>Ügyelet, 0–24 óra</dt><dd>{a_telek(UGYELET_SZAMOK, "<br>")}</dd></div>
+          <div><dt>Iroda, munkaidőben</dt><dd>{a_telek(IRODA_SZAMOK, "<br>")}</dd></div>
           <div><dt>Email</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div>
           <div><dt>Cím</dt><dd>{CIM}</dd></div>
         </dl>
@@ -377,8 +356,8 @@ def kapcsolat(v):
 
 
 SZAKASZOK = dict(nyito=nyito, ismeros=ismeros, teendok=teendok, szolgaltatasok=szolgaltatasok,
-                 koltsegek=koltsegek, rolunk=rolunk, velemenyek=velemenyek, hol=hol, kapcsolat=kapcsolat)
-MENU = {"teendok": "Teendők", "szolgaltatasok": "Szolgáltatások", "koltsegek": "Költségek",
+                 rolunk=rolunk, velemenyek=velemenyek, hol=hol, kapcsolat=kapcsolat)
+MENU = {"teendok": "Teendők", "szolgaltatasok": "Szolgáltatások",
         "rolunk": "Rólunk", "kapcsolat": "Kapcsolat"}
 
 
@@ -396,7 +375,7 @@ def marka(v):
 
 def oldal(v, d):
     tartalom = "\n\n    ".join(SZAKASZOK[s](v) for s in d["rend"])
-    nav = "\n".join(f'        <li><a href="#{k if k != "koltsegek" else "koltsegek"}">{MENU[k]}</a></li>' for k in d["rend"] if k in MENU)
+    nav = "\n".join(f'        <li><a href="#{k}">{MENU[k]}</a></li>' for k in d["rend"] if k in MENU)
     return f"""<!doctype html>
 <html lang="hu">
 <head>
@@ -404,7 +383,7 @@ def oldal(v, d):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Pietas Temetkezés, Miskolc – teljes körű temetés, 24 órás ügyelet (bemutató)</title>
-  <meta name="description" content="Teljes körű temetkezés Miskolcon 1991 óta: hamvasztásos és koporsós temetés, gyászhirdetés, koszorú, halottszállítás. Iroda: Csabai kapu 16., hétköznap 8:30–16:00. Ügyelet: {UGYELET}.">
+  <meta name="description" content="Teljes körű temetkezés Miskolcon 1991 óta: hamvasztásos és koporsós temetés, koszorú, halottszállítás. Iroda: Csabai kapu 16., hétköznap 8:30–15:30. Ügyelet: {UGYELET}.">
   <meta name="theme-color" content="{d['theme']}">
   {ICON}
   <link rel="preload" href="../assets/betuk/{d['preload']}" as="font" type="font/woff2" crossorigin>
@@ -516,7 +495,7 @@ def valaszto():
   <div class="bemutato-sav" role="note"><p><strong>Bemutató ajánlat – nem a {CEG} hivatalos weboldala.</strong> Csak Ön látja.</p></div>
   <main class="keret">
     <h1>Három változat a {CEG} weboldalára</h1>
-    <p class="bevezeto">A tartalom mindháromban ugyanaz: a 24 órás ügyelet egy érintéssel hívható száma, a teendők haláleset után, a szükséges iratok, a költségek és az iroda nyitvatartása. A különbség az arculat és a hangsúly. Nézze meg mindhármat, és jelölje meg, mi tetszik.</p>
+    <p class="bevezeto">A tartalom mindháromban ugyanaz: a 24 órás ügyelet egy érintéssel hívható száma, a teendők haláleset után, a szükséges iratok, hogy miből áll a költség, és az iroda nyitvatartása. A különbség az arculat és a hangsúly. Nézze meg mindhármat, és jelölje meg, mi tetszik.</p>
 
     <!-- Változatkártyák: sites/_sablonok/_valaszto/ (gyorsweb; képek: elonezet.py) -->
     <ul class="valtozatok">
@@ -583,13 +562,13 @@ def ajanlat():
             <h3>Elavult és üres részek</h3>
             <dl>
               <div><dt>Most</dt><dd>A kezdőlapon még a járvány idejéből maradt kérés áll. A temető üzemeltetéséről „közel 2 éve” olvasható, pedig 2008 óta tart. A „Szórásos” oldal üres, a Kapcsolat oldalon a térkép helye üres.</dd></div>
-              <div class="uj"><dt>Az új oldalon</dt><dd>Friss, ellenőrzött tények: 1991 óta, 2008 óta a hejőcsabai temető, nyitvatartás és útvonal a Csabai kapuhoz.</dd></div>
+              <div class="uj"><dt>Az új oldalon</dt><dd>Friss, ellenőrzött tények: 1991 óta, 2008 óta a {TEMETO}, a temető címe és nyitvatartása, útvonal az irodához és a temetőhöz.</dd></div>
             </dl>
           </li>
           <li>
             <h3>Aki most veszítette el valakijét, nem kap egy helyen választ</h3>
             <dl>
-              <div><dt>Most</dt><dd>A teendők, az iratok, a költségek és a nyitvatartás öt külön aloldalon vannak. A díjmentes elszállítás és koszorú-kiszállítás, és az urnakiadás alig látszik.</dd></div>
+              <div><dt>Most</dt><dd>A teendők, az iratok, a költségek és a nyitvatartás öt külön aloldalon vannak. A díjmentes elszállítás és koszorú-kiszállítás alig látszik.</dd></div>
               <div class="uj"><dt>Az új oldalon</dt><dd>Egy oldalon, sorrendben: kit hívjon, mit hozzon, miből áll a költség, mikor van nyitva az iroda. Az előnyök jól látható helyen.</dd></div>
             </dl>
           </li>
@@ -597,14 +576,14 @@ def ajanlat():
 
         <div class="tipp">
           <h3>Ingyenes tipp, az oldaltól függetlenül</h3>
-          <p>Az „Észak gyászhirdetés” aloldal utolsó bekezdésébe valaki egy oda nem illő mondatot és reklámlinket tett, egy „virtuális barátnő” szolgáltatásra. Ezt olvassák a gyászhirdetést feladni készülő családok. Feltört WordPressre vagy illetéktelen hozzáférésre utalhat: érdemes a mondatot törölni, az admin-jelszavakat lecserélni, és a WordPresst a bővítményekkel együtt frissíteni. Szívesen megmutatom, hol van.</p>
+          <p>Az „Észak gyászhirdetés” aloldal utolsó bekezdésébe valaki egy oda nem illő mondatot és reklámlinket tett, egy „virtuális barátnő” szolgáltatásra. Ezt látja minden család, aki erre az aloldalra jut. Feltört WordPressre vagy illetéktelen hozzáférésre utalhat. Mivel a gyászhirdetést már nem vállalják, az aloldal egészében törölhető; emellett érdemes az admin-jelszavakat lecserélni, és a WordPresst a bővítményekkel együtt frissíteni. Szívesen megmutatom, hol van.</p>
         </div>
 
         <h3>Amit még beletettem</h3>
         <ul class="apro">
           <li>„Amit a családok először kérdeznek”: rövid válaszok a leggyakoribb kérdésekre, a mostani oldal tájékoztatóiból.</li>
-          <li>A gyászhirdetés árai táblázatban, a javasolt mérettel; a temetés költségeinek tételei egy helyen.</li>
-          <li>Hely a családok véleményének, a tájékoztató áraknak és néhány saját fotónak: ezeket a hívásban pontosítjuk.</li>
+          <li>A temetés költségének tételei egy helyen, a gyakori kérdések között.</li>
+          <li>Hely a családok véleményének és néhány saját fotónak: ezeket a hívásban pontosítjuk.</li>
           <li>A logót vektorosan újrarajzoltam, hogy minden méretben éles legyen. Az eredeti fájl jobb lenne.</li>
         </ul>
         <!-- MÉRÉS: PageSpeed (régi oldal, Marcell méri) és Lighthouse (új oldal), mobil – elemzes.md. -->

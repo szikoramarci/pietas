@@ -10,11 +10,11 @@ Nem indexelt, csak a tulajdonossal osztjuk meg. Ha nem kérik, 2–4 hét után 
 site/                     ← a Cloudflare Pages gyökere (a functions/ miatt ennek kell lennie)
   index.html              ← választó: három változat előnézeti képpel
   v1/ v2/ v3/             ← Mécses, Ív, Liliom (generált)
-  ajanlat/                ← miért készült, mit találtunk, ki készítette (értékesítési réteg)
+  ajanlat/                ← mit hoz az új oldal, ki készítette (anyagok/ajanlat_oldal.py, sablon: gyorsweb _sablonok/_ajanlat)
   adatkezeles/            ← a bemutató oldal adatkezelési tájékoztatója (réteg)
   assets/                 ← alap.css + v1–v3.css, betűk (saját tárhelyről), réteg JS/CSS
   valaszto/               ← előnézeti képek (elonezet.py)
-  functions/_middleware.js  ← PIN-kódos belépés (DEMO_PIN)
+  functions/_middleware.js  ← PIN-kódos belépés (DEMO_PIN); nyitott mód: DEMO_NYITVA=1 (botok kizárva)
   functions/api/jelzes.js   ← „Tetszik ez a rész?” és időpontfoglaló jelzések → VISSZAJELZES KV
 anyagok/
   adatok.md               ← tényadatok forrással, nyitott kérdések

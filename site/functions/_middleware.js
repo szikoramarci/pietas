@@ -5,13 +5,46 @@
 // Ha hiányzik, az oldal NEM nyílik meg (zárt alapállapot).
 //
 // Helyes PIN után egy 30 napos, HttpOnly süti engedi tovább a látogatót.
+// A PIN a linkben is megadható: /v1/?pin=123456 (a kód utána lekerül a címről).
 // A PIN megváltoztatása minden korábbi belépést érvénytelenít.
 // Minden válaszra X-Robots-Tag: noindex, nofollow fejléc kerül.
+//
+// Nyitott mód (ideiglenes, a tulajdonos döntése, 2026-11-17): DEMO_NYITVA = "1" környezeti változóval
+// a PIN-oldal kimarad, bárki beléphet. Ilyenkor is: a botok és a linkelőnézet-készítők 403-at kapnak
+// (User-Agent alapján), minden válasz noindex, a robots.txt mindent tilt. Visszakapcsolás: DEMO_NYITVA
+// törlése vagy "0", majd újratelepítés (Pages: a változó a következő telepítéstől él).
 
 const ROBOTS = "noindex, nofollow";
 const SUTI = "demo_belepes";
 const BELEPES = "/__belepes";
 const encoder = new TextEncoder();
+
+// Keresők, AI-gyűjtők, SEO-eszközök, linkelőnézet-készítők és parancssori letöltők (a mobilos alkalmazások
+// beépített böngészői, pl. Facebook, Instagram, LinkedIn, átmennek). A Google PageSpeed / Lighthouse
+// (Chrome-Lighthouse) átengedve, hogy a demó mérhető legyen.
+const BOT = /(googlebot|google-inspectiontool|googleother|google-extended|adsbot|mediapartners|apis-google|feedfetcher|bingbot|bingpreview|msnbot|slurp|duckduckbot|duckassistbot|baiduspider|yandex|sogou|exabot|seznambot|petalbot|bytespider|applebot|facebookexternalhit|facebot|meta-externalagent|whatsapp\/|telegrambot|slackbot|discordbot|twitterbot|linkedinbot|pinterestbot|skypeuripreview|embedly|semrush|ahrefs|majestic|mj12bot|dotbot|blexbot|serpstat|dataforseo|gptbot|chatgpt-user|oai-searchbot|claudebot|claude-web|anthropic|perplexity|cohere|ccbot|diffbot|amazonbot|ia_archiver|archive\.org|headlesschrome|phantomjs|python|curl\/|wget|httpclient|okhttp|go-http|java\/|libwww|node-fetch|axios|scrapy|crawler|spider|\bbot\b)/i;
+const MERO = /chrome-lighthouse/i;
+
+function bot(request) {
+  const ua = request.headers.get("User-Agent") || "";
+  if (!ua.trim()) return true;
+  return BOT.test(ua) && !MERO.test(ua);
+}
+
+function tiltas() {
+  return new Response("Ez egy privát bemutató oldal.", {
+    status: 403,
+    headers: { "Content-Type": "text/plain; charset=utf-8", "X-Robots-Tag": ROBOTS, "Cache-Control": "no-store" },
+  });
+}
+
+async function atenged(next) {
+  const response = await next();
+  const res = new Response(response.body, response);
+  res.headers.set("X-Robots-Tag", ROBOTS);
+  res.headers.set("Cache-Control", "private, no-store");
+  return res;
+}
 
 async function hash(text) {
   const d = await crypto.subtle.digest("SHA-256", encoder.encode(text));
@@ -89,6 +122,20 @@ function pinOldal(vissza, hiba, status = 401) {
 }
 
 export async function onRequest({ request, env, next }) {
+  const url0 = new URL(request.url);
+
+  // Nyitott mód: PIN nélkül, de botok nélkül és indexelés nélkül.
+  if (env.DEMO_NYITVA === "1") {
+    if (url0.pathname === "/robots.txt") return atenged(next);
+    if (bot(request)) return tiltas();
+    if (url0.pathname === BELEPES) return Response.redirect(new URL("/", url0).toString(), 303);
+    if (url0.searchParams.has("pin") && request.method === "GET") {
+      url0.searchParams.delete("pin");
+      return new Response(null, { status: 303, headers: { Location: biztonsagosVissza(url0.pathname + url0.search), "Cache-Control": "no-store", "X-Robots-Tag": ROBOTS } });
+    }
+    return atenged(next);
+  }
+
   const pin = env.DEMO_PIN;
   if (!pin) {
     return new Response("A bemutató oldal még nincs beállítva.", {
@@ -124,15 +171,26 @@ export async function onRequest({ request, env, next }) {
     return pinOldal(vissza, "Ez a kód nem jó. Próbálja újra.");
   }
 
-  // Belépett látogató
   const suti = sutik(request.headers.get("Cookie"))[SUTI] || "";
-  if (egyezik(suti, jel)) {
-    const response = await next();
-    const res = new Response(response.body, response);
-    res.headers.set("X-Robots-Tag", ROBOTS);
-    res.headers.set("Cache-Control", "private, no-store");
-    return res;
+
+  // PIN a linkben (pl. /v1/?pin=123456), hogy ne kelljen beírni: helyes kódnál süti, és
+  // átirányítás ugyanoda a kód nélkül, így a PIN nem marad a címsorban.
+  const linkPin = url.searchParams.get("pin");
+  if (linkPin !== null && request.method === "GET") {
+    url.searchParams.delete("pin");
+    const cel = biztonsagosVissza(url.pathname + url.search);
+    const fejlec = { Location: cel, "Cache-Control": "no-store", "X-Robots-Tag": ROBOTS };
+    if (egyezik(suti, jel)) return new Response(null, { status: 303, headers: fejlec });
+    if (egyezik(await hash("gyorsweb-demo:" + linkPin.replace(/\s/g, "")), jel)) {
+      fejlec["Set-Cookie"] = `${SUTI}=${jel}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`;
+      return new Response(null, { status: 303, headers: fejlec });
+    }
+    await new Promise((r) => setTimeout(r, 800)); // lassítja a próbálgatást
+    return pinOldal(cel, "A linkben lévő kód nem jó. Írja be a kapott PIN-kódot.");
   }
+
+  // Belépett látogató
+  if (egyezik(suti, jel)) return atenged(next);
 
   // Nincs belépve: PIN-oldal (a kérdőív végpontja nem érhető el belépés nélkül)
   if (url.pathname.startsWith("/api/")) {

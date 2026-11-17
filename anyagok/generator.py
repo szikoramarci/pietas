@@ -406,7 +406,7 @@ def oldal(v, d):
   {SPRITE}
   <div class="bemutato-sav" role="note">
     <p><strong>Bemutató ajánlat – nem a {CEG} hivatalos weboldala.</strong> Változat: {d['nev']}.</p>
-    <p class="sav-linkek"><a href="../">Mindhárom változat</a> <a href="../ajanlat/">Miért készült, és ki készítette?</a></p>
+    <p class="sav-linkek"><a href="../">Mindhárom változat</a> <a href="../ajanlat/">Mit hoz az új oldal, és ki készítette?</a></p>
   </div>
 
   <header class="fejlec">
@@ -505,7 +505,7 @@ def valaszto():
     <ul class="valtozatok">
 {kartyak()}
     </ul>
-    <p class="tovabb"><a href="ajanlat/">Miért készült, és ki készítette?</a></p>
+    <p class="tovabb"><a href="ajanlat/">Mit hoz az új oldal, és ki készítette?</a></p>
 
     {VELEMENY_RESZ}
   </main>
@@ -661,8 +661,6 @@ if __name__ == "__main__":
         (SITE / v).mkdir(parents=True, exist_ok=True)
         (SITE / v / "index.html").write_text(oldal(v, d), encoding="utf-8")
     (SITE / "index.html").write_text(valaszto(), encoding="utf-8")
-    lh_f = ANYAG / "lighthouse.txt"
-    lh = lh_f.read_text(encoding="utf-8").strip() if lh_f.exists() else "[mérés folyamatban]"
-    (SITE / "ajanlat").mkdir(exist_ok=True)
-    (SITE / "ajanlat" / "index.html").write_text(ajanlat().replace("[LIGHTHOUSE_EREDMENY]", lh), encoding="utf-8")
+    import ajanlat_oldal  # az ajánlatoldal: anyagok/ajanlat_oldal.py (sablon: gyorsweb sites/_sablonok/_ajanlat/)
+    ajanlat_oldal.main()
     print("ok")

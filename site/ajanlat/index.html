@@ -4,173 +4,188 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Weboldal a Pietas Temetkezés részére – miért készült, és ki készítette (bemutató)</title>
-  <meta name="description" content="Miért készült weboldal-bemutató a Pietas Temetkezés részére, mit találtunk, és ki készítette.">
+  <title>Mit hoz az új oldal, és ki készítette – Pietas Temetkezés (bemutató)</title>
+  <meta name="theme-color" content="#132a3e">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23592131%27/%3E%3Cpath d=%27M22 54V24a10 10 0 0 1 20 0v30Z%27 fill=%27%23F7F1E8%27/%3E%3C/svg%3E">
+  <link rel="preload" href="../assets/ajanlat/inter.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/valaszto.css">
   <link rel="stylesheet" href="../assets/ajanlat.css">
+  <script src="../assets/ajanlat.js" defer></script>
   <!-- ÉRTÉKESÍTÉSI RÉTEG (élesítéskor törlendő) -->
   <link rel="stylesheet" href="../assets/ki-keszitette.css">
   <script src="../assets/ki-keszitette.js" defer></script>
   <link rel="stylesheet" href="../assets/foglalo.css">
   <script src="../assets/foglalo.js" defer></script>
   <script src="../assets/tetszik.js" defer></script>
-  <!-- Cloudflare Web Analytics (sütimentes) – token élesítés előtt:
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "[CLOUDFLARE_TOKEN]"}'></script>
-  -->
 </head>
-<body>
+<body class="aj">
   <a class="ugras" href="#tartalom">Ugrás a tartalomra</a>
   <div class="bemutato-sav" role="note">
-    <p><strong>Bemutató – nem a Pietas Temetkezés hivatalos weboldala.</strong> <a href="../">Vissza a három változathoz</a></p>
+    <p><strong>Bemutató – nem a PIETAS Kft. hivatalos weboldala.</strong> <a href="../">Vissza a három változathoz</a></p>
   </div>
-
   <main id="tartalom">
-    <section class="keret nyit">
-      <h1>Miért készült ez az oldal, és ki készítette?</h1>
-      <!-- KÖZÖS PONT: egy mondat, részletek nélkül (SZABALYOK.md). Marcell döntse el, van-e ismeretség (lásd adatok.md, „Nyitott kérdések”). -->
-      <p>Szikora Marcell vagyok, weboldalakat készítek (webness.hu). Tiszanagyfaluban lakom, itt a környéken.</p>
-      <p>A mostani weboldalukon a fontos tudnivalók több aloldalon vannak, és a telefonszámok mobilon nem hívhatók egy érintéssel. A nyilvános anyagaikból elkészítettem három változatot, hogy ne kelljen elképzelni, milyen lehetne: ki lehet próbálni, telefonon is.</p>
-      <p class="alairas">Szikora Marcell<br><small>webness.hu</small></p>
-    </section>
-
-    <section class="sav-vilagos">
-      <div class="keret">
-        <h2>Mit találtunk?</h2>
-        <p class="halvany">Három dolog, ami azokat érinti, akik most keresnek temetkezési szolgáltatót Miskolcon. Ellenőrizve: 2026. november 13.</p>
-
-        <ol class="problemak">
-          <li>
-            <h3>Telefonról nem lehet egy érintéssel hívni</h3>
-            <dl>
-              <div><dt>Most</dt><dd>Egyik telefonszám sem kattintható. A 24 órás ügyelet száma a kezdőlap szövegének alján és egy aloldal közepén áll. Az oldal mobilon a nagyítást is letiltja.</dd></div>
-              <div class="uj"><dt>Az új oldalon</dt><dd>Az első képernyőn ott a „Hívás éjjel-nappal” gomb, és telefonon görgetés közben is mindig látszik. Minden szám egy érintéssel hívható.</dd></div>
-            </dl>
-          </li>
-          <li>
-            <h3>Elavult és üres részek</h3>
-            <dl>
-              <div><dt>Most</dt><dd>A kezdőlapon még a járvány idejéből maradt kérés áll. A temető üzemeltetéséről „közel 2 éve” olvasható, pedig 2008 óta tart. A „Szórásos” oldal üres, a Kapcsolat oldalon a térkép helye üres.</dd></div>
-              <div class="uj"><dt>Az új oldalon</dt><dd>Friss, ellenőrzött tények: 1991 óta, 2008 óta a Hejőcsabai Római Katolikus temető, a temető címe és nyitvatartása, útvonal az irodához és a temetőhöz.</dd></div>
-            </dl>
-          </li>
-          <li>
-            <h3>Aki most veszítette el valakijét, nem kap egy helyen választ</h3>
-            <dl>
-              <div><dt>Most</dt><dd>A teendők, az iratok, a költségek és a nyitvatartás öt külön aloldalon vannak. A díjmentes elszállítás és koszorú-kiszállítás alig látszik.</dd></div>
-              <div class="uj"><dt>Az új oldalon</dt><dd>Egy oldalon, sorrendben: kit hívjon, mit hozzon, miből áll a költség, mikor van nyitva az iroda. Az előnyök jól látható helyen.</dd></div>
-            </dl>
-          </li>
-        </ol>
-
-        <div class="tipp">
-          <h3>Ingyenes tipp, az oldaltól függetlenül</h3>
-          <p>Az „Észak gyászhirdetés” aloldal utolsó bekezdésébe valaki egy oda nem illő mondatot és reklámlinket tett, egy „virtuális barátnő” szolgáltatásra. Ezt látja minden család, aki erre az aloldalra jut. Feltört WordPressre vagy illetéktelen hozzáférésre utalhat. Mivel a gyászhirdetést már nem vállalják, az aloldal egészében törölhető; emellett érdemes az admin-jelszavakat lecserélni, és a WordPresst a bővítményekkel együtt frissíteni. Szívesen megmutatom, hol van.</p>
+    <header class="aj-hero">
+      <div class="keret keret-szuk">
+        <p class="aj-felcim">Pietas Temetkezés · pietas-temetkezes.hu</p>
+        <h1>Az Önök oldala: most, és az új változatban</h1>
+        <p class="aj-alairo"><img src="https://webness.hu/assets/marcell.jpg" alt="" width="48" height="48"><span><b>Szikora Marcell</b> készítette, 2026. november</span></p>
+        <div class="aj-muszerfal" style="--oszlopok:1fr 1fr 1fr">
+          <div class="aj-kartya">
+            <p class="aj-kartya-cim">A 24 órás ügyelet száma</p>
+            <p class="aj-teny"><span class="aj-teny-c">Most</span><span class="aj-teny-regi">a kezdőlap szövegének alján</span></p><p class="aj-teny"><span class="aj-teny-c">Új oldal</span><span class="aj-teny-uj"><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>az első képernyőn, egy koppintással</span></p>
+            
+          </div>
+          <div class="aj-kartya">
+            <p class="aj-kartya-cim">Hívás telefonról</p>
+            <p class="aj-lepesszam"><span class="regi"><b>3</b> lépés</span><span class="nyil" aria-hidden="true">→</span><span class="uj"><b>1</b> koppintás</span></p>
+            <p class="aj-kartya-apro">Most: kimásolni, átváltani, begépelni. Az új oldalon: Hívás gomb.</p>
+          </div>
+          <div class="aj-kartya">
+            <p class="aj-kartya-cim">Teendők, iratok, költségek</p>
+            <p class="aj-lepesszam"><span class="regi"><b>5</b> aloldal</span><span class="nyil" aria-hidden="true">→</span><span class="uj"><b>1</b> oldal</span></p>
+            <p class="aj-kartya-apro">Az új oldalon sorrendben, egy helyen, a nyitvatartással együtt.</p>
+          </div>
         </div>
-
-        <h3>Amit még beletettem</h3>
-        <ul class="apro">
-          <li>„Amit a családok először kérdeznek”: rövid válaszok a leggyakoribb kérdésekre, a mostani oldal tájékoztatóiból.</li>
-          <li>A temetés költségének tételei egy helyen, a gyakori kérdések között.</li>
-          <li>Hely a családok véleményének és néhány saját fotónak: ezeket a hívásban pontosítjuk.</li>
-          <li>A logót vektorosan újrarajzoltam, hogy minden méretben éles legyen. Az eredeti fájl jobb lenne.</li>
+        <p class="aj-meres">Ellenőrizve a mostani oldalon, böngészőben, minden aloldal megnyitva: 2026. 11. 13.</p>
+      </div>
+    </header>
+    <section class="aj-szakasz aj-felulet" aria-labelledby="ut-cim">
+      <div class="keret keret-szuk">
+        <h2 id="ut-cim">Egy család útja, három lépésben</h2>
+        <p class="aj-alcim">A mostani oldalon megvan minden fontos: a szolgáltatások, a teendők, az iratok és az elérhetőségek. Az új változat abban segít, hogy aki most veszítette el valakijét, telefonról is gyorsan elérje Önöket, és egy helyen kapjon választ.</p>
+        <article class="aj-lepes">
+          <p class="aj-lepes-szam">1. lépés</p>
+          <h3>A család telefonról keresi az ügyeletet</h3>
+          <div class="aj-lepes-test"><div><div class="aj-ket">
+            <figure class="aj-oldal"><span class="aj-cimke mostani">Mostani oldal</span><div class="aj-szovegkep"><p class="aj-szovegkep-cim">A kezdőlap szövegében</p><ul><li>„…nyugodtan hívják a 06 46 431 014-es telefonszámot vagy a 06 70 9 475 490-es mobil számot.”</li><li>A számok szövegként, nem egy koppintással hívhatók</li></ul></div>
+              <figcaption>A 24 órás ügyelet száma a kezdőlap szövegének alján és a „Mi a teendőnk?” oldalon van.</figcaption></figure>
+            <figure class="aj-oldal aj-oldal-uj aj-oldal-mobil"><span class="aj-cimke uj"><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Új oldal</span><img class="aj-mobilkep" src="../assets/ajanlat/uj-mobil.webp" alt="Az új kezdőlap mobilon" width="390" height="844" loading="lazy">
+              <figcaption><b>Az ügyelet száma az első képernyőn,</b> egy koppintással hívható; mobilon a Hívás gomb mindig látszik.</figcaption></figure>
+          </div></div>
+          <div class="aj-miert"><p class="aj-miert-cim">Miért fontos?</p><p class="aj-miert-szam">51%</p><p class="aj-miert-szoveg">Magyarországon a weboldal-látogatások 51%-a telefonról érkezik.</p><p class="aj-forras">Forrás: StatCounter, 2026. július</p></div></div>
+        </article>
+        <article class="aj-lepes">
+          <p class="aj-lepes-szam">2. lépés</p>
+          <h3>A család megnézi, mi a teendő</h3>
+          <div class="aj-lepes-test"><div><div class="aj-ket">
+            <figure class="aj-oldal"><span class="aj-cimke mostani">Mostani oldal</span><div class="aj-szovegkep"><p class="aj-szovegkep-cim">Öt külön aloldalon</p><ul><li>Teendők</li><li>Szükséges iratok</li><li>Költségek</li><li>Nyitvatartás</li><li>24 órás ügyelet</li></ul></div>
+              <figcaption>Minden információ megvan, a menü több pontja alatt.</figcaption></figure>
+            <figure class="aj-oldal aj-oldal-uj aj-oldal-mobil"><span class="aj-cimke uj"><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Új oldal</span><img class="aj-mobilkep" src="../assets/ajanlat/uj-teendok.webp" alt="Az új oldal teendők része mobilon" width="780" height="1400" loading="lazy">
+              <figcaption><b>Egy oldalon, sorrendben:</b> mi a teendő otthoni és kórházi halálesetnél, milyen iratokat hozzon, miből áll a költség.</figcaption></figure>
+          </div></div>
+          </div>
+        </article>
+        <article class="aj-lepes">
+          <p class="aj-lepes-szam">3. lépés</p>
+          <h3>A család felkeresi az irodát</h3>
+          <div class="aj-lepes-test"><div><div class="aj-ket">
+            <figure class="aj-oldal"><span class="aj-cimke mostani">Mostani oldal</span><div class="aj-szovegkep"><p class="aj-szovegkep-cim">Kapcsolat aloldal</p><ul><li>Cím és nyitvatartás (hétköznap 8:30–16:00)</li><li>A telefonszámok szövegként</li></ul></div>
+              <figcaption>A nyitvatartás csak a Kapcsolat oldalon látszik.</figcaption></figure>
+            <figure class="aj-oldal aj-oldal-uj"><span class="aj-cimke uj"><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Új oldal</span><div class="aj-kivagas aj-kivagas-vilagos"><img src="../assets/ajanlat/uj-kapcsolat.webp" alt="Az új oldal elérhetőségei" width="780" height="1100" loading="lazy"></div>
+              <figcaption><b>Cím, útvonal, nyitvatartás és ügyelet egy helyen,</b> minden szám egy koppintással hívható.</figcaption></figure>
+          </div></div>
+          <div class="aj-miert"><p class="aj-miert-cim">Miért fontos?</p><p class="aj-miert-szam">58%</p><p class="aj-miert-szoveg">A megkérdezettek 58%-a a cég weboldalán ellenőrzi, amit a Google-ben vagy a közösségi oldalakon látott.</p><p class="aj-forras">Forrás: DreamHost, 2026, több mint 1200 fős amerikai felmérés</p></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="aj-szakasz">
+      <div class="keret keret-szuk">
+        <h2>Ami még bekerült az új változatba</h2>
+        <ul class="aj-chipek"><li><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Az Ív változatban megmarad a logó sírkő-íve és a bordó szín</span></li><li><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Előre kerül: díjmentes elszállítás Miskolcon belül, díjmentes koszorú-kiszállítás, urnakiadás</span></li><li><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>„Amit a családok először kérdeznek”: rövid válaszok</span></li><li><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>A temetés költségének tételei egy helyen</span></li><li><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Évszámokkal: 1991 óta, a hejőcsabai temető 2008 óta</span></li><li><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Mobilon nagyítható betűk</span></li><li><svg class="aj-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Hely a családok véleményének és saját fotóknak</span></li></ul>
+      </div>
+    </section>
+    <section class="aj-szakasz aj-felulet">
+      <div class="keret keret-szuk">
+        <h2>Három változat, ugyanazzal a tartalommal</h2>
+        <p class="aj-alcim">Részenként jelezheti, mi tetszik és min változtatna; a lap alján időpontot is foglalhat.</p>
+        <ul class="valtozatok harom">
+        <li class="valtozat">
+          <div class="elonezet">
+            <img class="asztali" src="../valaszto/v1-asztali.webp" alt="" width="720" height="450" loading="lazy">
+            <img class="mobil" src="../valaszto/v1-mobil.webp" alt="" width="195" height="422" loading="lazy">
+          </div>
+          <div class="test">
+            <p class="szam">1. változat</p>
+            <h3 class="kartya-cim">Mécses</h3>
+            <p class="leir">Mélyzöld, nyugodt színek, a nyitóképen mécsesfénnyel a 24 órás ügyelet száma. Nagy, jól olvasható betűk.</p>
+            <p class="tz-szam" data-tz-oldal="/v1/" hidden></p>
+            <a class="megnez" href="../v1/">Megnézem: Mécses</a>
+          </div>
+        </li>
+        <li class="valtozat">
+          <div class="elonezet">
+            <img class="asztali" src="../valaszto/v2-asztali.webp" alt="" width="720" height="450" loading="lazy">
+            <img class="mobil" src="../valaszto/v2-mobil.webp" alt="" width="195" height="422" loading="lazy">
+          </div>
+          <div class="test">
+            <p class="szam">2. változat</p>
+            <h3 class="kartya-cim">Ív</h3>
+            <p class="leir">A mostani arculat felújítva: a logó sírkő-íve, a bordó és a borostyán szín, papírszerű háttér.</p>
+            <p class="tz-szam" data-tz-oldal="/v2/" hidden></p>
+            <a class="megnez" href="../v2/">Megnézem: Ív</a>
+          </div>
+        </li>
+        <li class="valtozat">
+          <div class="elonezet">
+            <img class="asztali" src="../valaszto/v3-asztali.webp" alt="" width="720" height="450" loading="lazy">
+            <img class="mobil" src="../valaszto/v3-mobil.webp" alt="" width="195" height="422" loading="lazy">
+          </div>
+          <div class="test">
+            <p class="szam">3. változat</p>
+            <h3 class="kartya-cim">Liliom</h3>
+            <p class="leir">Világos, levegős, nagy betűs változat; már a nyitóképen ott van lépésről lépésre, mi a teendő.</p>
+            <p class="tz-szam" data-tz-oldal="/v3/" hidden></p>
+            <a class="megnez" href="../v3/">Megnézem: Liliom</a>
+          </div>
+        </li>
         </ul>
-        <!-- MÉRÉS: PageSpeed (régi oldal, Marcell méri) és Lighthouse (új oldal), mobil – elemzes.md. -->
-        <p class="meres">Az új oldal mindhárom változata a Google Lighthouse mérésén mobilon: Lighthouse, mobil (100-as skálán): <strong>99</strong> (teljesítmény), <strong>100</strong> (akadálymentesség).</p>
       </div>
     </section>
-
-    <section class="keret">
-      <h2>Három változat</h2>
-      <p class="halvany">A tartalom ugyanaz, az arculat és a hangsúly más. Mindegyik változatban részenként jelezheti, mi tetszik és min változtatna; a lap alján összegyűjtjük, és ott időpontot is foglalhat egy rövid beszélgetésre.</p>
-      <ul class="valtozatok">
-      <li class="valtozat">
-        <div class="elonezet">
-          <img class="asztali" src="../valaszto/v1-asztali.webp" alt="" width="720" height="450">
-          <img class="mobil" src="../valaszto/v1-mobil.webp" alt="" width="195" height="422">
-        </div>
-        <div class="test">
-          <p class="szam">1. változat</p>
-          <h3 class="kartya-cim">Mécses</h3>
-          <p class="leir">Mélyzöld, nyugodt színek, a nyitóképen mécsesfénnyel a 24 órás ügyelet száma. Nagy, jól olvasható betűk, a telefonszámok mindig kiemelve.</p>
-          <p class="tz-szam" data-tz-oldal="/v1/" hidden></p>
-          <a class="megnez" href="../v1/">Megnézem a Mécses változatot</a>
-        </div>
-      </li>
-      <li class="valtozat">
-        <div class="elonezet">
-          <img class="asztali" src="../valaszto/v2-asztali.webp" alt="" width="720" height="450">
-          <img class="mobil" src="../valaszto/v2-mobil.webp" alt="" width="195" height="422">
-        </div>
-        <div class="test">
-          <p class="szam">2. változat</p>
-          <h3 class="kartya-cim">Ív</h3>
-          <p class="leir">A mostani arculat felújítva: a logó sírkő-íve, a bordó és a borostyán szín, papírszerű háttér. A szolgáltatások kerülnek előre.</p>
-          <p class="tz-szam" data-tz-oldal="/v2/" hidden></p>
-          <a class="megnez" href="../v2/">Megnézem a Ív változatot</a>
-        </div>
-      </li>
-      <li class="valtozat">
-        <div class="elonezet">
-          <img class="asztali" src="../valaszto/v3-asztali.webp" alt="" width="720" height="450">
-          <img class="mobil" src="../valaszto/v3-mobil.webp" alt="" width="195" height="422">
-        </div>
-        <div class="test">
-          <p class="szam">3. változat</p>
-          <h3 class="kartya-cim">Liliom</h3>
-          <p class="leir">Világos, levegős, nagy betűs változat. Már a nyitóképen ott van lépésről lépésre, mi a teendő haláleset után.</p>
-          <p class="tz-szam" data-tz-oldal="/v3/" hidden></p>
-          <a class="megnez" href="../v3/">Megnézem a Liliom változatot</a>
-        </div>
-      </li>
-      </ul>
-    </section>
-
-    <section class="sav-vilagos" aria-labelledby="gyik-cim">
-      <div class="keret">
+    <section class="aj-szakasz" aria-labelledby="gyik-cim">
+      <div class="keret keret-szuk">
         <h2 id="gyik-cim">Gyakori kérdések</h2>
-        <dl class="gyik">
-          <dt>Mit kell nekünk csinálni?</dt>
-          <dd>Szinte semmit: a tartalom a mostani weboldalukról van. Egy rövid hívásban átnézzük, mi tetszik, és kérek néhány dolgot: az eredeti logót, pár fotót az irodáról, és hogy mely adatok változtak.</dd>
-          <dt>Mi lesz a mostani oldallal és a címmel?</dt>
-          <dd>A pietas-temetkezes.hu cím marad, csak az új oldal kerül mögé. A régi aloldalak címeit átirányítjuk, így a Google-találatok sem vesznek el.</dd>
-          <dt>Kell-e ehhez WordPress-t frissítgetni?</dt>
-          <dd>Nem. Az új oldalon nincs bővítmény és admin-felület, így nincs mit frissítgetni, és a feltörés esélye is jóval kisebb.</dd>
-          <dt>Mibe kerül?</dt>
-          <dd>Ezt a hívásban, a kívánságaik alapján beszéljük meg, és írásban is elküldöm. Ha nem kérik, a bemutatót töröljük.</dd>
-        </dl>
+        <div class="aj-gyik">
+        <details class="aj-kerdes"><summary>Mit kell nekünk csinálni?</summary><p>Szinte semmit: a tartalom a mostani weboldalukról van. Egy rövid hívásban átnézzük, mi tetszik, és kérek néhány dolgot: az eredeti logót, pár fotót az irodáról, és hogy mely adatok változtak.</p></details>
+        <details class="aj-kerdes"><summary>Mi lesz a mostani oldallal és a címmel?</summary><p>A pietas-temetkezes.hu cím marad, csak az új oldal kerül mögé. A régi aloldalak címeit átirányítjuk, így a Google-találatok sem vesznek el.</p></details>
+        <details class="aj-kerdes"><summary>Kell-e ehhez WordPress-t frissítgetni?</summary><p>Nem. Az új oldalon nincs bővítmény és admin-felület, így nincs mit frissítgetni, és a feltörés esélye is jóval kisebb.</p></details>
+        <details class="aj-kerdes"><summary>Mibe kerül?</summary><p>Ezt a hívásban, a kívánságaik alapján beszéljük meg, és írásban is elküldöm. Ha nem kérik, a bemutatót töröljük.</p></details>
+        </div>
       </div>
     </section>
-
-    <section class="keret ki" id="ki" aria-labelledby="ki-cim">
-      <img class="portre" src="https://webness.hu/assets/marcell.jpg" alt="Szikora Marcell portréja" width="800" height="1000" loading="lazy">
-      <div>
-        <h2 id="ki-cim">Ki készítette?</h2>
-        <p>Szikora Marcell vagyok, szoftvermérnök, a Webness alapítója. Gyerekkorom óta programozom: több mint 15 év alatt 116+ weboldalt, webshopot és üzleti rendszert adtam át. Az Accenture-nél vezető fejlesztő voltam, ma a WorkFlex nemzetközi startupnál vagyok tech lead.</p>
-        <p>Kis családi vállalkozásoknak és nagy cégeknek is dolgozom, például a Salzgitter Mannesmann, a D-Link, a Miskolci Nemzeti Színház, a Jánosik és Társai és az Orha Művek számára. Velem közvetlenül dolgoznak: azzal beszélnek, aki a megoldást megtervezi és megírja.</p>
+    <section class="aj-szakasz aj-felulet" id="ki" aria-labelledby="ki-cim">
+      <div class="keret keret-szuk aj-ki">
+        <img class="aj-ki-kep" src="https://webness.hu/assets/marcell.jpg" alt="Szikora Marcell portréja" width="800" height="1000" loading="lazy">
+        <div class="aj-ki-szoveg">
+          <p class="aj-felcim">Ki készítette?</p>
+          <h2 id="ki-cim">Szikora Marcell, szoftvermérnök</h2>
+          <p>Weboldalakat és üzleti rendszereket készítek. Velem közvetlenül dolgozik: azzal beszél, aki megtervezi és megírja az oldalt.</p>
+          <ul class="aj-szamok">
+            <li><strong>15+</strong><span>év a szakmában</span></li>
+            <li><strong>116+</strong><span>átadott projekt</span></li>
+            <li><strong data-kk-szam>16</strong><span>ügyfélvélemény</span></li>
+          </ul>
+          <p class="aj-ugyfelek"><span>Akiknek dolgoztam:</span> Salzgitter Mannesmann · D‑Link · Miskolci Nemzeti Színház · Jánosik és Társai · Orha Művek</p>
+          <figure class="aj-idezet">
+            <blockquote>„Bátran ajánlom őket mindenkinek, aki nemcsak kivitelezőt, hanem együtt gondolkodó partnert keres.”</blockquote>
+            <figcaption>Kocziszky Ádám, Salzgitter Mannesmann</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="keret keret-szuk">
+        <details class="aj-osszes">
+          <summary><span>Mind a <span data-kk-szam>16</span> ügyfélvélemény, szó szerint</span></summary>
+          <div data-kk-velemenyek></div>
+        </details>
       </div>
     </section>
-
-    <section class="sav-vilagos" aria-labelledby="vel-cim">
-      <div class="keret">
-        <h2 id="vel-cim">Akikkel már dolgoztam</h2>
-        <p class="halvany"><span data-kk-szam>16</span> ügyfél, az ő szavaikkal, változtatás nélkül, ahogy a webness.hu-n is olvashatók.</p>
-        <div data-kk-velemenyek></div>
+    <section class="aj-cta" aria-labelledby="cta-cim">
+      <div class="keret keret-szuk">
+        <h2 id="cta-cim">Beszéljük meg 15 percben</h2>
+        <p>Együtt végignézzük a három változatot, és elmondja, mi hiányzik még. Telefonon vagy Google Meeten, ahogy Önnek kényelmes. Ingyenes, és semmire nem kötelez.</p>
+        <a class="aj-cta-gomb" href="#idopont" data-foglalo="ajanlat">Időpontot foglalok</a>
+        <p class="aj-vissza"><a href="../">Vissza a három változathoz</a></p>
       </div>
-    </section>
-
-    <section class="keret zaro hivas-resz" aria-labelledby="hivas-cim">
-      <h2 id="hivas-cim">Kérdése van? Beszéljük meg 15 percben</h2>
-      <p class="halvany">Azzal beszél, aki az oldalt megtervezte és megírta. Telefonon hívom, vagy Google Meeten beszélünk, ahogy Önnek kényelmesebb.</p>
-      <p class="hivas-sor"><a class="gomb gomb-fo hivas-gomb" href="#idopont" data-foglalo="ajanlat">Időpontot foglalok</a></p>
-      <p><a href="../">Vissza a három változathoz</a></p>
     </section>
   </main>
-
-  <footer class="lablec">
-    <div class="keret">
-      <p>Bemutató a Pietas Temetkezés részére · webness.hu · <a href="../adatkezeles/">Adatkezelési tájékoztató</a></p>
-    </div>
-  </footer>
 </body>
 </html>

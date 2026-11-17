@@ -20,16 +20,15 @@ from ajanlat import stat  # noqa: E402
 CFG = {
     "ceg": "Pietas Temetkezés", "domain": "pietas-temetkezes.hu",
     "sav": "Bemutató – nem a PIETAS Kft. hivatalos weboldala.",
-    "cim": "Az Önök oldala: most, és az új változatban",
+    "cim": "Az Önök oldala számokban: most, és az új változatban",
     "title": "Mit hoz az új oldal, és ki készítette",
     "kartyak": [
         {"tipus": "teny", "cim": "A 24 órás ügyelet száma", "most": "a kezdőlap szövegének alján", "uj": "az első képernyőn, egy koppintással"},
-        {"tipus": "szam", "cim": "Hívás telefonról", "most": ("3", "lépés"), "uj": ("1", "koppintás"),
-         "apro": "Most: kimásolni, átváltani, begépelni. Az új oldalon: Hívás gomb."},
-        {"tipus": "szam", "cim": "Teendők, iratok, költségek", "most": ("5", "aloldal"), "uj": ("1", "oldal"),
-         "apro": "Az új oldalon sorrendben, egy helyen, a nyitvatartással együtt."},
+        {"tipus": "pont", "cim": "Google hivatalos értékelése", "most": 60, "uj": 100},
+        {"tipus": "ido", "cim": "Töltési sebesség", "most": 9.0, "uj": 1.0},
     ],
-    "meres": "Ellenőrizve a mostani oldalon, böngészőben, minden aloldal megnyitva: 2026. 11. 13.",
+    "meres": ("Mérés: Google PageSpeed Insights, mobil, 2026. 11. 17., ugyanazon a napon a mostani és az új oldalra. "
+              "A tartalmi összevetés böngészőben, minden aloldal megnyitva: 2026. 11. 13."),
     "ut": {
         "cim": "Egy család útja, három lépésben",
         "bevezeto": ("A mostani oldalon megvan minden fontos: a szolgáltatások, a teendők, az iratok és az elérhetőségek. "

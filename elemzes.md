@@ -47,3 +47,5 @@ Lighthouse 12, mobil, helyi szerver (2026. 11. 13.):
 SEO a `noindex` miatt nem mérve (várt). Kontraszt (kontraszt.py): mindhárom változat minden párosa AA felett.
 
 2026-11-17: az ajánlatoldal az új szerkezettel (`anyagok/ajanlat_oldal.py`, sablon: gyorsweb `sites/_sablonok/_ajanlat/`). Lighthouse mobil, helyi szerver: teljesítmény 98, akadálymentesség 100, bevált gyakorlatok 100, LCP 2,1 s, CLS 0. A PIN-middleware a réteg-sablonból (nyitott mód: `DEMO_NYITVA=1`).
+
+Google PageSpeed Insights, mobil, élesben (nyitott mód), 2026-11-17 12:00 körül: mostani oldal 60, LCP 9,0 s; új (v1) 100, LCP 1,0 s. Ezek kerültek az ajánlatoldalra.
